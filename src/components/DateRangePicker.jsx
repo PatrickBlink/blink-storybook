@@ -12,8 +12,6 @@ export const DateRangePicker = ({
   required = false,
   helperText,
   size = 'md',
-  minDate,
-  maxDate,
   ...props
 }) => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -28,24 +26,6 @@ export const DateRangePicker = ({
     return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
   };
 
-  const generateCalendarDays = () => {
-    const daysInMonth = getDaysInMonth(currentMonth);
-    const firstDay = getFirstDayOfMonth(currentMonth);
-    const days = [];
-
-    // Empty cells for days before month starts
-    for (let i = 0; i < firstDay; i++) {
-      days.push(null);
-    }
-
-    // Days of the month
-    for (let i = 1; i <= daysInMonth; i++) {
-      days.push(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i));
-    }
-
-    return days;
-  };
-
   const formatDate = (date) => {
     if (!date) return '';
     const year = date.getFullYear();
@@ -56,37 +36,91 @@ export const DateRangePicker = ({
 
   const parseDate = (dateString) => {
     if (!dateString) return null;
-    return new Date(dateString + 'T00:00:00');
+    const [year, month, day] = dateString.split('-');
+    return new Date(year, parseInt(month) - 1, day);
+  };
+
+  const generateCalendarDays = () => {
+    const daysInMonth = getDaysInMonth(currentMonth);
+    const firstDay = getFirstDayOfMonth(currentMonth);
+    const days = [];
+
+    for (let i = 0; i < firstDay; i++) {
+      days.push(null);
+    }
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i));
+    }
+
+    return days;
+  };
+
+  const isBeforeStart = (date) => {
+    if (!startDate) return false;
+    const start = parseDate(startDate);
+    return date < start;
   };
 
   const isInRange = (date) => {
     if (!startDate || !endDate) return false;
     const start = parseDate(startDate);
     const end = parseDate(endDate);
-    return date >= start && date <= end;
+    return date > start && date < end;
   };
 
   const isSelected = (date) => {
-    if (selectingStart && startDate) {
-      return formatDate(date) === startDate;
-    }
-    if (!selectingStart && endDate) {
-      return formatDate(date) === endDate;
-    }
-    return false;
+    const dateStr = formatDate(date);
+    return dateStr === startDate || dateStr === endDate;
   };
 
   const handleDayClick = (day) => {
     const dateString = formatDate(day);
+
     if (selectingStart) {
       onStartDateChange?.(dateString);
       setSelectingStart(false);
     } else {
-      onEndDateChange?.(dateString);
-      if (startDate && endDate) {
-        setShowCalendar(false);
+      // Check if clicked date is before start date - if so, swap them
+      if (startDate && parseDate(dateString) < parseDate(startDate)) {
+        onEndDateChange?.(startDate);
+        onStartDateChange?.(dateString);
+      } else {
+        onEndDateChange?.(dateString);
       }
+      // Close calendar after selecting end date
+      setShowCalendar(false);
+      setSelectingStart(true); // Reset for next range selection
     }
+  };
+
+  const handleQuickSelect = (days) => {
+    const end = new Date();
+    const start = new Date();
+    start.setDate(start.getDate() - days);
+
+    onStartDateChange?.(formatDate(start));
+    onEndDateChange?.(formatDate(end));
+    setShowCalendar(false);
+    setSelectingStart(true);
+  };
+
+  const handleToday = () => {
+    const today = formatDate(new Date());
+    onStartDateChange?.(today);
+    onEndDateChange?.(today);
+    setShowCalendar(false);
+    setSelectingStart(true);
+  };
+
+  const handleYesterday = () => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterday_str = formatDate(yesterday);
+    onStartDateChange?.(yesterday_str);
+    onEndDateChange?.(yesterday_str);
+    setShowCalendar(false);
+    setSelectingStart(true);
   };
 
   const handlePrevMonth = () => {
@@ -98,7 +132,7 @@ export const DateRangePicker = ({
   };
 
   const calendarDays = generateCalendarDays();
-  const monthName = currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' });
+  const monthYear = currentMonth.toLocaleString('default', { month: 'short', year: 'numeric' }).toUpperCase();
 
   return (
     <div className={`${styles.dateRangeWrapper} ${styles[size]}`}>
@@ -110,7 +144,6 @@ export const DateRangePicker = ({
       )}
 
       <div className={styles.rangeContainer}>
-        {/* Start Date */}
         <div className={`${styles.dateInputGroup} ${styles.startDate}`}>
           <div
             className={`${styles.dateInputContainer} ${error ? styles.error : ''} ${
@@ -122,7 +155,6 @@ export const DateRangePicker = ({
               type="text"
               className={styles.dateInput}
               value={startDate || ''}
-              onChange={(e) => onStartDateChange?.(e.target.value)}
               placeholder="Start Date"
               disabled={disabled}
               readOnly
@@ -130,10 +162,8 @@ export const DateRangePicker = ({
           </div>
         </div>
 
-        {/* Separator */}
         <div className={styles.separator}>To</div>
 
-        {/* End Date */}
         <div className={`${styles.dateInputGroup} ${styles.endDate}`}>
           <div
             className={`${styles.dateInputContainer} ${error ? styles.error : ''} ${
@@ -145,7 +175,6 @@ export const DateRangePicker = ({
               type="text"
               className={styles.dateInput}
               value={endDate || ''}
-              onChange={(e) => onEndDateChange?.(e.target.value)}
               placeholder="End Date"
               disabled={disabled}
               readOnly
@@ -154,70 +183,112 @@ export const DateRangePicker = ({
         </div>
       </div>
 
-      {/* Calendar Dropdown */}
       {showCalendar && !disabled && (
         <div className={styles.calendarDropdown}>
-          {/* Header */}
-          <div className={styles.calendarHeader}>
-            <button className={styles.navButton} onClick={handlePrevMonth} type="button">
-              ‹
-            </button>
-            <span className={styles.monthYear}>{monthName}</span>
-            <button className={styles.navButton} onClick={handleNextMonth} type="button">
-              ›
-            </button>
-          </div>
-
-          {/* Weekdays */}
-          <div className={styles.weekdaysRow}>
-            {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day) => (
-              <div key={day} className={styles.weekday}>
-                {day}
-              </div>
-            ))}
-          </div>
-
-          {/* Days Grid */}
-          <div className={styles.daysGrid}>
-            {calendarDays.map((day, index) => (
+          <div className={styles.calendarContent}>
+            {/* Left Sidebar - Quick Select */}
+            <div className={styles.quickSelectSidebar}>
               <button
-                key={index}
+                className={styles.quickSelectButton}
+                onClick={handleToday}
                 type="button"
-                className={`${styles.day} ${
-                  day
-                    ? `${isSelected(day) ? styles.selected : ''} ${
-                        isInRange(day) ? styles.inRange : ''
-                      }`
-                    : styles.empty
-                }`}
-                onClick={() => day && handleDayClick(day)}
-                disabled={!day}
               >
-                {day?.getDate()}
+                Today
               </button>
-            ))}
-          </div>
+              <button
+                className={styles.quickSelectButton}
+                onClick={handleYesterday}
+                type="button"
+              >
+                Yesterday
+              </button>
+              <button
+                className={styles.quickSelectButton}
+                onClick={() => handleQuickSelect(7)}
+                type="button"
+              >
+                Last 7 days
+              </button>
+              <button
+                className={styles.quickSelectButton}
+                onClick={() => handleQuickSelect(14)}
+                type="button"
+              >
+                Last 14 days
+              </button>
+              <button
+                className={styles.quickSelectButton}
+                onClick={() => handleQuickSelect(30)}
+                type="button"
+              >
+                Last 30 days
+              </button>
+              <button
+                className={styles.quickSelectButton}
+                onClick={() => {
+                  /* Opens custom date - for now just keep calendar open */
+                }}
+                type="button"
+              >
+                Custom date
+              </button>
+            </div>
 
-          {/* Footer */}
-          <div className={styles.calendarFooter}>
-            <button
-              className={styles.clearButton}
-              onClick={() => {
-                onStartDateChange?.('');
-                onEndDateChange?.('');
-                setShowCalendar(false);
-              }}
-              type="button"
-            >
-              Clear
-            </button>
-            <button
-              className={styles.applyButton}
-              onClick={() => setShowCalendar(false)}
-              type="button"
-            >
-              Apply
-            </button>
+            {/* Right Side - Calendar */}
+            <div className={styles.calendarPanel}>
+              {/* Month/Year Navigation */}
+              <div className={styles.monthNavigation}>
+                <button
+                  className={styles.navButton}
+                  onClick={handlePrevMonth}
+                  type="button"
+                >
+                  ‹
+                </button>
+                <span className={styles.monthYear}>{monthYear}</span>
+                <button
+                  className={styles.navButton}
+                  onClick={handleNextMonth}
+                  type="button"
+                >
+                  ›
+                </button>
+              </div>
+
+              {/* Weekday Headers */}
+              <div className={styles.weekdaysRow}>
+                {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day) => (
+                  <div key={day} className={styles.weekday}>
+                    {day}
+                  </div>
+                ))}
+              </div>
+
+              {/* Calendar Grid */}
+              <div className={styles.daysGrid}>
+                {calendarDays.map((day, index) => {
+                  const isBeforeStartDate = day && isBeforeStart(day);
+                  const isInDateRange = day && isInRange(day);
+                  const isDateSelected = day && isSelected(day);
+
+                  return (
+                    <button
+                      key={index}
+                      type="button"
+                      className={`${styles.day} ${
+                        isDateSelected ? styles.selected : ''
+                      } ${isInDateRange ? styles.inRange : ''} ${
+                        isBeforeStartDate ? styles.beforeStart : ''
+                      } ${!day ? styles.empty : ''}`}
+                      onClick={() => day && !isBeforeStartDate && handleDayClick(day)}
+                      disabled={!day || isBeforeStartDate}
+                    >
+                      {day?.getDate()}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       )}
