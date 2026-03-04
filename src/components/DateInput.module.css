@@ -1,6 +1,6 @@
 @import './design-tokens.css';
 
-.inputWrapper {
+.dateWrapper {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
@@ -25,7 +25,8 @@
   font-weight: 700;
 }
 
-.inputContainer {
+.dateContainer {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
@@ -36,35 +37,36 @@
   box-shadow: var(--shadow-sm);
   transition: var(--transition-default);
   box-sizing: border-box;
+  min-height: 40px;
 }
 
-.inputContainer:hover:not(.disabled) {
+.dateContainer:hover:not(.disabled) {
   border-color: var(--color-border-hover);
   box-shadow: var(--shadow-md);
 }
 
-.inputContainer:focus-within {
+.dateContainer:focus-within {
   border-color: var(--color-primary);
   background-color: var(--color-background);
   box-shadow: var(--shadow-focus-primary);
   outline: none;
 }
 
-.inputContainer.error {
+.dateContainer.error {
   border-color: var(--color-error);
   background-color: var(--color-background);
   box-shadow: var(--shadow-sm);
 }
 
-.inputContainer.error:hover:not(.disabled) {
+.dateContainer.error:hover:not(.disabled) {
   box-shadow: var(--shadow-md);
 }
 
-.inputContainer.error:focus-within {
+.dateContainer.error:focus-within {
   box-shadow: var(--shadow-focus-error);
 }
 
-.inputContainer.disabled {
+.dateContainer.disabled {
   background-color: var(--color-background-disabled);
   cursor: not-allowed;
   border-color: var(--color-border);
@@ -81,11 +83,13 @@
   font-weight: var(--font-weight-input);
   color: var(--color-text-primary);
   background-color: transparent;
+  cursor: pointer;
   line-height: var(--line-height-input);
 }
 
-.input::placeholder {
-  color: var(--color-text-secondary);
+/* Chrome/Edge date picker styling */
+.input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 .input:disabled {
@@ -93,28 +97,16 @@
   color: var(--color-text-disabled);
 }
 
-.input:disabled::placeholder {
-  color: var(--color-text-disabled);
-}
-
-.iconLeft,
-.iconRight {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-secondary);
+.icon {
+  position: absolute;
+  right: var(--spacing-md);
+  pointer-events: none;
   font-size: 18px;
-  flex-shrink: 0;
-  transition: var(--transition-fast);
+  opacity: 0.6;
 }
 
-.inputContainer:hover:not(.disabled) .iconLeft,
-.inputContainer:hover:not(.disabled) .iconRight {
-  color: var(--color-text-primary);
-}
-
-.inputContainer:focus-within .iconLeft,
-.inputContainer:focus-within .iconRight {
+.dateContainer:focus-within .icon {
+  opacity: 1;
   color: var(--color-primary);
 }
 
@@ -140,7 +132,7 @@
   padding: 8px 0;
 }
 
-.sm .inputContainer {
+.sm .dateContainer {
   padding: var(--spacing-xs) var(--spacing-md);
   min-height: 36px;
 }
@@ -150,7 +142,7 @@
   padding: 10px 0;
 }
 
-.md .inputContainer {
+.md .dateContainer {
   padding: 10px var(--spacing-md);
   min-height: 40px;
 }
@@ -160,7 +152,7 @@
   padding: 12px 0;
 }
 
-.lg .inputContainer {
+.lg .dateContainer {
   padding: 12px var(--spacing-lg);
   min-height: 48px;
 }
