@@ -1,0 +1,316 @@
+@import './design-tokens.css';
+
+.dateRangeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  position: relative;
+}
+
+.label {
+  font-family: var(--font-family);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-label);
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+  margin-bottom: 8px;
+}
+
+.required {
+  color: var(--color-error);
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.rangeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.dateInputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dateInputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-background);
+  border: none;
+  border-bottom: var(--underline-height-inactive) solid var(--underline-color-inactive);
+  transition: var(--transition-default);
+  cursor: pointer;
+}
+
+.dateInputContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--underline-height-active);
+  background-color: var(--underline-color-active);
+  transform: scaleX(0);
+  transition: var(--transition-default);
+  transform-origin: center;
+}
+
+.dateInputContainer:hover:not(.disabled) {
+  border-bottom-color: var(--underline-color-inactive);
+}
+
+.dateInputContainer:focus-within {
+  border-bottom-color: var(--underline-color-active);
+}
+
+.dateInputContainer:focus-within::after {
+  transform: scaleX(1);
+}
+
+.dateInputContainer.error {
+  border-bottom-color: var(--underline-color-error);
+}
+
+.dateInputContainer.error:focus-within {
+  border-bottom-color: var(--underline-color-error);
+}
+
+.dateInputContainer.error::after {
+  background-color: var(--underline-color-error);
+}
+
+.dateInputContainer.disabled {
+  border-bottom-color: var(--underline-color-inactive);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.dateInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-input);
+  font-weight: var(--font-weight-input);
+  color: var(--color-text-primary);
+  background-color: transparent;
+  cursor: pointer;
+  line-height: var(--line-height-input);
+}
+
+.dateInput::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.separator {
+  padding: 0 6px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+  align-self: center;
+  margin-bottom: 2px;
+}
+
+/* Calendar Dropdown */
+.calendarDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 280px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.monthYear {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.navButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 200ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navButton:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.weekdaysRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.weekday {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: center;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.day {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day:not(.empty):hover {
+  background-color: rgba(119, 194, 247, 0.12);
+}
+
+.day.selected {
+  background-color: #77c2f7;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.day.inRange {
+  background-color: rgba(119, 194, 247, 0.24);
+  color: var(--color-text-primary);
+}
+
+.day.empty {
+  pointer-events: none;
+}
+
+.calendarFooter {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.clearButton,
+.applyButton {
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.clearButton:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.applyButton {
+  background-color: #77c2f7;
+  color: #ffffff;
+  border-color: #77c2f7;
+}
+
+.applyButton:hover {
+  background-color: #5a9dd4;
+  border-color: #5a9dd4;
+  box-shadow: 0 2px 8px rgba(119, 194, 247, 0.3);
+}
+
+.errorText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-error);
+  color: var(--color-error);
+  font-weight: var(--font-weight-error);
+  margin-top: 4px;
+}
+
+.helperText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-helper);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-helper);
+  margin-top: 4px;
+}
+
+/* Size variants */
+.sm .dateInput {
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+.sm .dateInputContainer {
+  padding: 6px 0;
+}
+
+.md .dateInput {
+  font-size: var(--font-size-input);
+  padding: 8px 0;
+}
+
+.md .dateInputContainer {
+  padding: 8px 0;
+}
+
+.lg .dateInput {
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+.lg .dateInputContainer {
+  padding: 10px 0;
+}
