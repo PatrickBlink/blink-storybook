@@ -1,0 +1,1965 @@
+{
+  "metadata": {
+    "name": "Blink Design System",
+    "version": "1.0.0",
+    "description": "Complete design system for Blink dispatch management platform",
+    "exportDate": "2026-02-03T09:55:40.507Z",
+    "storybookOptimized": true,
+    "frameworkAgnostic": true
+  },
+  "usageGuide": {
+    "description": "This design system export is framework-agnostic and can be used in React, Angular, Vue, or any web framework.",
+    "tokens": {
+      "description": "Design tokens define primitive and semantic values for styling",
+      "usage": "Each token has a 'value' (actual CSS value) and 'variable' (CSS variable name). Use values for direct implementation or variables for dynamic theming.",
+      "example": {
+        "css": "--spacing-2: 8px;",
+        "react": "style={{ padding: 'var(--spacing-2)' }}",
+        "angular": "[style.padding]=\"'var(--spacing-2)'\"",
+        "vue": ":style=\"{ padding: 'var(--spacing-2)' }\""
+      }
+    },
+    "components": {
+      "description": "Component definitions include code examples, colors, and comprehensive style tokens",
+      "styleTokens": {
+        "description": "Each component's styleTokens object provides complete styling specifications",
+        "structure": "Properties include both raw values (e.g., '8px') and CSS variable references (e.g., 'var(--spacing-2)')",
+        "usage": "Use styleTokens to replicate exact component styling in any framework",
+        "example": {
+          "token": {
+            "paddingHorizontal": {
+              "value": "8px",
+              "variable": "var(--spacing-2)"
+            }
+          },
+          "css": "padding-left: 8px; padding-right: 8px; /* OR */ padding-inline: var(--spacing-2);",
+          "react": "style={{ paddingInline: 'var(--spacing-2)' }}",
+          "angular": "[style.padding-inline]=\"'var(--spacing-2)'\""
+        }
+      },
+      "statuses": {
+        "description": "Status badges include color, textColor, and brandColor for each status value",
+        "usage": "Use color for background, textColor for text, and brandColor for reference to the brand palette"
+      }
+    }
+  },
+  "tokens": {
+    "colors": {
+      "Primary Blue": {
+        "colors": [
+          {
+            "name": "Lighter 100",
+            "hex": "#C4CDDB",
+            "variable": "--primary-100"
+          },
+          {
+            "name": "Light 300",
+            "hex": "#7A8EA9",
+            "variable": "--primary-300"
+          },
+          {
+            "name": "Main 500",
+            "hex": "#405E8A",
+            "variable": "--primary-500"
+          },
+          {
+            "name": "Dark 700",
+            "hex": "#314C75",
+            "variable": "--primary-700"
+          },
+          {
+            "name": "Darker 900",
+            "hex": "#23324F",
+            "variable": "--primary-900"
+          }
+        ]
+      },
+      "Secondary Blue": {
+        "colors": [
+          {
+            "name": "Lighter 50",
+            "hex": "#E0F0F9",
+            "variable": "--secondary-50"
+          },
+          {
+            "name": "Light 200",
+            "hex": "#80C1EB",
+            "variable": "--secondary-200"
+          },
+          {
+            "name": "Main 400",
+            "hex": "#0096E1",
+            "variable": "--secondary-400"
+          },
+          {
+            "name": "Dark 600",
+            "hex": "#0079D0",
+            "variable": "--secondary-600"
+          },
+          {
+            "name": "Darker 800",
+            "hex": "#0058AD",
+            "variable": "--secondary-800"
+          }
+        ]
+      },
+      "Tertiary / Warning": {
+        "colors": [
+          {
+            "name": "Lighter 200",
+            "hex": "#FAEC9B",
+            "variable": "--warning-200"
+          },
+          {
+            "name": "Light 400",
+            "hex": "#F6E059",
+            "variable": "--warning-400"
+          },
+          {
+            "name": "Main 600",
+            "hex": "#F2CA3B",
+            "variable": "--warning-600"
+          },
+          {
+            "name": "Dark 800",
+            "hex": "#EA9C2E",
+            "variable": "--warning-800"
+          },
+          {
+            "name": "Darker 900",
+            "hex": "#E37523",
+            "variable": "--warning-900"
+          }
+        ]
+      },
+      "Quaternary": {
+        "colors": [
+          {
+            "name": "Lighter 100",
+            "hex": "#E2BBD7",
+            "variable": "--quaternary-100"
+          },
+          {
+            "name": "Light 300",
+            "hex": "#BA63A3",
+            "variable": "--quaternary-300"
+          },
+          {
+            "name": "Main 500",
+            "hex": "#9A2380",
+            "variable": "--quaternary-500"
+          },
+          {
+            "name": "Dark 700",
+            "hex": "#7E1874",
+            "variable": "--quaternary-700"
+          },
+          {
+            "name": "Darker 900",
+            "hex": "#550C5C",
+            "variable": "--quaternary-900"
+          }
+        ]
+      },
+      "Success": {
+        "colors": [
+          {
+            "name": "Lighter 100",
+            "hex": "#E2F1C4",
+            "variable": "--success-100"
+          },
+          {
+            "name": "Light 300",
+            "hex": "#BBDE76",
+            "variable": "--success-300"
+          },
+          {
+            "name": "Main 500",
+            "hex": "#9ACF30",
+            "variable": "--success-500"
+          },
+          {
+            "name": "Dark 700",
+            "hex": "#73AA1C",
+            "variable": "--success-700"
+          },
+          {
+            "name": "Darker 900",
+            "hex": "#5D8916",
+            "variable": "--success-900"
+          }
+        ]
+      },
+      "Error": {
+        "colors": [
+          {
+            "name": "Lighter 50",
+            "hex": "#FEECEF",
+            "variable": "--error-50"
+          },
+          {
+            "name": "Light 200",
+            "hex": "#ED9C9E",
+            "variable": "--error-200"
+          },
+          {
+            "name": "Main 400",
+            "hex": "#ED5958",
+            "variable": "--error-400"
+          },
+          {
+            "name": "Dark 600",
+            "hex": "#E3413E",
+            "variable": "--error-600"
+          },
+          {
+            "name": "Darker 800",
+            "hex": "#C43131",
+            "variable": "--error-800"
+          }
+        ]
+      },
+      "Grays": {
+        "colors": [
+          {
+            "name": "Lighter 100",
+            "hex": "#E9E9E9",
+            "variable": "--gray-100"
+          },
+          {
+            "name": "Light 300",
+            "hex": "#C4C4C4",
+            "variable": "--gray-300"
+          },
+          {
+            "name": "Main 500",
+            "hex": "#7B7B7B",
+            "variable": "--gray-500"
+          },
+          {
+            "name": "Dark 700",
+            "hex": "#434343",
+            "variable": "--gray-700"
+          },
+          {
+            "name": "Darker 900",
+            "hex": "#1A1A1A",
+            "variable": "--gray-900"
+          }
+        ]
+      },
+      "Black & White": {
+        "colors": [
+          {
+            "name": "White",
+            "hex": "#FFFFFF",
+            "variable": "--white"
+          },
+          {
+            "name": "Black 50%",
+            "hex": "rgba(0,0,0,0.5)",
+            "variable": "--black-50"
+          },
+          {
+            "name": "Black 80%",
+            "hex": "rgba(0,0,0,0.8)",
+            "variable": "--black-80"
+          },
+          {
+            "name": "Black",
+            "hex": "#000000",
+            "variable": "--black"
+          }
+        ]
+      }
+    },
+    "semanticColors": {
+      "background": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--background"
+      },
+      "backgroundSubtle": {
+        "value": "rgba(238, 238, 238, 1)",
+        "variable": "--background-subtle"
+      },
+      "foreground": {
+        "value": "rgba(35, 50, 79, 1)",
+        "variable": "--foreground"
+      },
+      "primary": {
+        "value": "rgba(122, 142, 169, 1)",
+        "variable": "--primary"
+      },
+      "primaryForeground": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--primary-foreground"
+      },
+      "secondary": {
+        "value": "rgba(0, 150, 225, 1)",
+        "variable": "--secondary"
+      },
+      "secondaryForeground": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--secondary-foreground"
+      },
+      "destructive": {
+        "value": "rgba(237, 89, 88, 1)",
+        "variable": "--destructive"
+      },
+      "destructiveForeground": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--destructive-foreground"
+      },
+      "border": {
+        "value": "rgba(233, 233, 233, 1)",
+        "variable": "--border"
+      },
+      "input": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--input"
+      },
+      "inputBackground": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--input-background"
+      },
+      "success": {
+        "value": "rgba(77, 164, 34, 1)",
+        "variable": "--success"
+      },
+      "successForeground": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--success-foreground"
+      },
+      "warning": {
+        "value": "rgba(245, 158, 11, 1)",
+        "variable": "--warning"
+      },
+      "warningForeground": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--warning-foreground"
+      },
+      "info": {
+        "value": "rgba(0, 150, 225, 1)",
+        "variable": "--info"
+      },
+      "infoForeground": {
+        "value": "rgba(255, 255, 255, 1)",
+        "variable": "--info-foreground"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "base": "'Lato', sans-serif",
+        "variable": "--font-family-base"
+      },
+      "fontSize": {
+        "h1": {
+          "value": "26px",
+          "variable": "--text-h1",
+          "lineHeight": "1.2",
+          "fontWeight": "600"
+        },
+        "h2": {
+          "value": "22px",
+          "variable": "--text-h2",
+          "lineHeight": "1.2",
+          "fontWeight": "600"
+        },
+        "h3": {
+          "value": "18px",
+          "variable": "--text-h3",
+          "lineHeight": "1.2",
+          "fontWeight": "600"
+        },
+        "h4": {
+          "value": "16px",
+          "variable": "--text-h4",
+          "lineHeight": "1.2",
+          "fontWeight": "600"
+        },
+        "base": {
+          "value": "14px",
+          "variable": "--text-base",
+          "lineHeight": "1.5",
+          "fontWeight": "400"
+        },
+        "sm": {
+          "value": "12px",
+          "variable": "--text-sm",
+          "lineHeight": "1.5",
+          "fontWeight": "400"
+        },
+        "xs": {
+          "value": "10px",
+          "variable": "--text-xs",
+          "lineHeight": "1.5",
+          "fontWeight": "400"
+        }
+      },
+      "fontWeight": {
+        "normal": {
+          "value": "400",
+          "variable": "--font-weight-normal"
+        },
+        "medium": {
+          "value": "600",
+          "variable": "--font-weight-medium"
+        },
+        "semibold": {
+          "value": "600",
+          "variable": "--font-weight-semibold"
+        }
+      }
+    },
+    "spacing": {
+      "0": {
+        "value": "0px",
+        "variable": "--spacing-0"
+      },
+      "1": {
+        "value": "4px",
+        "variable": "--spacing-1"
+      },
+      "2": {
+        "value": "8px",
+        "variable": "--spacing-2"
+      },
+      "3": {
+        "value": "12px",
+        "variable": "--spacing-3"
+      },
+      "4": {
+        "value": "16px",
+        "variable": "--spacing-4"
+      },
+      "5": {
+        "value": "20px",
+        "variable": "--spacing-5"
+      },
+      "6": {
+        "value": "24px",
+        "variable": "--spacing-6"
+      },
+      "7": {
+        "value": "28px",
+        "variable": "--spacing-7"
+      },
+      "8": {
+        "value": "32px",
+        "variable": "--spacing-8"
+      },
+      "10": {
+        "value": "40px",
+        "variable": "--spacing-10"
+      },
+      "12": {
+        "value": "48px",
+        "variable": "--spacing-12"
+      },
+      "16": {
+        "value": "64px",
+        "variable": "--spacing-16"
+      }
+    },
+    "borderRadius": {
+      "default": {
+        "value": "4px",
+        "variable": "--radius"
+      },
+      "button": {
+        "value": "100px",
+        "variable": "--radius-button"
+      },
+      "card": {
+        "value": "4px",
+        "variable": "--radius-card"
+      },
+      "input": {
+        "value": "1000px",
+        "variable": "--radius-input"
+      },
+      "badge": {
+        "value": "4px",
+        "variable": "--radius-badge"
+      },
+      "sm": {
+        "value": "2px",
+        "variable": "--radius-sm"
+      },
+      "md": {
+        "value": "4px",
+        "variable": "--radius-md"
+      },
+      "lg": {
+        "value": "8px",
+        "variable": "--radius-lg"
+      },
+      "xl": {
+        "value": "12px",
+        "variable": "--radius-xl"
+      },
+      "2xl": {
+        "value": "16px",
+        "variable": "--radius-2xl"
+      },
+      "full": {
+        "value": "9999px",
+        "variable": "--radius-full"
+      }
+    },
+    "borderWidth": {
+      "thin": {
+        "value": "1px",
+        "variable": "--border-width-thin"
+      },
+      "default": {
+        "value": "1px",
+        "variable": "--border-width-default"
+      },
+      "medium": {
+        "value": "2px",
+        "variable": "--border-width-medium"
+      },
+      "thick": {
+        "value": "4px",
+        "variable": "--border-width-thick"
+      }
+    },
+    "focusRing": {
+      "color": {
+        "value": "rgba(122, 142, 169, 1)",
+        "variable": "--focus-ring-color"
+      },
+      "width": {
+        "value": "2px",
+        "variable": "--focus-ring-width"
+      },
+      "offset": {
+        "value": "2px",
+        "variable": "--focus-ring-offset"
+      },
+      "style": {
+        "value": "solid",
+        "variable": "--focus-ring-style"
+      }
+    },
+    "shadows": {
+      "sm": {
+        "value": "2px 4px 4px 0px rgba(0, 0, 0, 0.15)",
+        "variable": "--elevation-sm"
+      },
+      "md": {
+        "value": "4px 8px 8px 0px rgba(0, 0, 0, 0.15)",
+        "variable": "--elevation-md"
+      },
+      "lg": {
+        "value": "8px 16px 16px 0px rgba(0, 0, 0, 0.15)",
+        "variable": "--elevation-lg"
+      },
+      "xl": {
+        "value": "12px 24px 24px 0px rgba(0, 0, 0, 0.15)",
+        "variable": "--elevation-xl"
+      }
+    },
+    "zIndex": {
+      "base": {
+        "value": "0",
+        "variable": "--z-index-base"
+      },
+      "dropdown": {
+        "value": "100",
+        "variable": "--z-index-dropdown"
+      },
+      "sticky": {
+        "value": "200",
+        "variable": "--z-index-sticky"
+      },
+      "fixed": {
+        "value": "300",
+        "variable": "--z-index-fixed"
+      },
+      "modalBackdrop": {
+        "value": "400",
+        "variable": "--z-index-modal-backdrop"
+      },
+      "modal": {
+        "value": "500",
+        "variable": "--z-index-modal"
+      },
+      "popover": {
+        "value": "600",
+        "variable": "--z-index-popover"
+      },
+      "tooltip": {
+        "value": "700",
+        "variable": "--z-index-tooltip"
+      },
+      "toast": {
+        "value": "999999",
+        "variable": "--z-index-toast"
+      }
+    },
+    "motion": {
+      "duration": {
+        "instant": {
+          "value": "0ms",
+          "variable": "--duration-instant"
+        },
+        "fast": {
+          "value": "150ms",
+          "variable": "--duration-fast"
+        },
+        "normal": {
+          "value": "250ms",
+          "variable": "--duration-normal"
+        },
+        "slow": {
+          "value": "350ms",
+          "variable": "--duration-slow"
+        },
+        "slower": {
+          "value": "500ms",
+          "variable": "--duration-slower"
+        }
+      },
+      "easing": {
+        "linear": {
+          "value": "linear",
+          "variable": "--easing-linear"
+        },
+        "easeIn": {
+          "value": "cubic-bezier(0.4, 0, 1, 1)",
+          "variable": "--easing-ease-in"
+        },
+        "easeOut": {
+          "value": "cubic-bezier(0, 0, 0.2, 1)",
+          "variable": "--easing-ease-out"
+        },
+        "easeInOut": {
+          "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "variable": "--easing-ease-in-out"
+        },
+        "spring": {
+          "value": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+          "variable": "--easing-spring"
+        }
+      }
+    },
+    "opacity": {
+      "0": {
+        "value": "0",
+        "variable": "--opacity-0"
+      },
+      "10": {
+        "value": "0.1",
+        "variable": "--opacity-10"
+      },
+      "20": {
+        "value": "0.2",
+        "variable": "--opacity-20"
+      },
+      "30": {
+        "value": "0.3",
+        "variable": "--opacity-30"
+      },
+      "40": {
+        "value": "0.4",
+        "variable": "--opacity-40"
+      },
+      "50": {
+        "value": "0.5",
+        "variable": "--opacity-50"
+      },
+      "60": {
+        "value": "0.6",
+        "variable": "--opacity-60"
+      },
+      "70": {
+        "value": "0.7",
+        "variable": "--opacity-70"
+      },
+      "80": {
+        "value": "0.8",
+        "variable": "--opacity-80"
+      },
+      "90": {
+        "value": "0.9",
+        "variable": "--opacity-90"
+      },
+      "100": {
+        "value": "1",
+        "variable": "--opacity-100"
+      }
+    },
+    "breakpoints": {
+      "xs": {
+        "value": "480px",
+        "variable": "--breakpoint-xs"
+      },
+      "sm": {
+        "value": "640px",
+        "variable": "--breakpoint-sm"
+      },
+      "md": {
+        "value": "768px",
+        "variable": "--breakpoint-md"
+      },
+      "lg": {
+        "value": "1024px",
+        "variable": "--breakpoint-lg"
+      },
+      "xl": {
+        "value": "1280px",
+        "variable": "--breakpoint-xl"
+      },
+      "2xl": {
+        "value": "1536px",
+        "variable": "--breakpoint-2xl"
+      }
+    }
+  },
+  "components": {
+    "functional": [
+      {
+        "id": "forms",
+        "name": "Form Controls",
+        "description": "Input fields, selects, checkboxes and form elements",
+        "components": [
+          {
+            "id": "input",
+            "name": "Input",
+            "description": "Standard text input field",
+            "code": "<Input type=\"text\" placeholder=\"Enter text...\" />",
+            "colors": [
+              {
+                "name": "Border",
+                "hex": "#E9E9E9",
+                "usage": "Input border color"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius-input)",
+              "fontSize": "var(--text-base)",
+              "fontFamily": "'Lato', sans-serif"
+            }
+          },
+          {
+            "id": "textarea",
+            "name": "Textarea",
+            "description": "Multi-line text input",
+            "code": "<Textarea placeholder=\"Enter text...\" />",
+            "colors": [
+              {
+                "name": "Border",
+                "hex": "#E9E9E9",
+                "usage": "Textarea border"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius-input)",
+              "fontSize": "var(--text-base)",
+              "fontFamily": "'Lato', sans-serif"
+            }
+          },
+          {
+            "id": "select",
+            "name": "Select",
+            "description": "Dropdown selection control",
+            "code": "<Select>\\n  <SelectTrigger>\\n    <SelectValue placeholder=\"Select...\" />\\n  </SelectTrigger>\\n  <SelectContent>\\n    <SelectItem value=\"1\">Option 1</SelectItem>\\n  </SelectContent>\\n</Select>",
+            "colors": [
+              {
+                "name": "Border",
+                "hex": "#E9E9E9",
+                "usage": "Select border"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius-input)",
+              "fontSize": "var(--text-base)"
+            }
+          },
+          {
+            "id": "checkbox",
+            "name": "Checkbox",
+            "description": "Binary selection control",
+            "code": "<Checkbox id=\"terms\" />",
+            "colors": [
+              {
+                "name": "Checked",
+                "hex": "#7A8EA9",
+                "usage": "Checkbox checked state"
+              }
+            ],
+            "technicalDetails": {
+              "size": "16px × 16px"
+            }
+          },
+          {
+            "id": "radio",
+            "name": "Radio Group",
+            "description": "Single selection from multiple options",
+            "code": "<RadioGroup>\\n  <RadioGroupItem value=\"option1\" id=\"r1\" />\\n</RadioGroup>",
+            "colors": [
+              {
+                "name": "Selected",
+                "hex": "#7A8EA9",
+                "usage": "Radio selected state"
+              }
+            ],
+            "technicalDetails": {
+              "size": "16px × 16px"
+            }
+          },
+          {
+            "id": "switch",
+            "name": "Switch",
+            "description": "Toggle control for binary states",
+            "code": "<Switch />",
+            "colors": [
+              {
+                "name": "Active",
+                "hex": "#7A8EA9",
+                "usage": "Switch active state"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius-button)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "buttons",
+        "name": "Buttons",
+        "description": "Action buttons and interactive controls",
+        "components": [
+          {
+            "id": "button-default",
+            "name": "Button",
+            "description": "Primary action button for main interactions",
+            "code": "<Button variant=\"default\" size=\"default\">Button</Button>",
+            "colors": [
+              {
+                "name": "Primary Light 300",
+                "hex": "#7A8EA9",
+                "usage": "Default variant background"
+              },
+              {
+                "name": "Secondary Main 400",
+                "hex": "#0096E1",
+                "usage": "Secondary variant background"
+              },
+              {
+                "name": "Error Main 400",
+                "hex": "#ED5958",
+                "usage": "Destructive variant background"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius-button)",
+              "fontSize": "var(--text-sm)",
+              "fontWeight": "var(--font-weight-medium)",
+              "fontFamily": "'Lato', sans-serif"
+            },
+            "styleTokens": {
+              "paddingHorizontal": {
+                "default": {
+                  "value": "16px",
+                  "variable": "var(--spacing-4)"
+                },
+                "sm": {
+                  "value": "12px",
+                  "variable": "var(--spacing-3)"
+                },
+                "lg": {
+                  "value": "20px",
+                  "variable": "var(--spacing-5)"
+                }
+              },
+              "paddingVertical": {
+                "default": {
+                  "value": "8px",
+                  "variable": "var(--spacing-2)"
+                },
+                "sm": {
+                  "value": "4px",
+                  "variable": "var(--spacing-1)"
+                },
+                "lg": {
+                  "value": "12px",
+                  "variable": "var(--spacing-3)"
+                }
+              },
+              "borderRadius": {
+                "value": "100px",
+                "variable": "var(--radius-button)"
+              },
+              "fontSize": {
+                "default": {
+                  "value": "12px",
+                  "variable": "var(--text-sm)"
+                },
+                "sm": {
+                  "value": "10px",
+                  "variable": "var(--text-xs)"
+                },
+                "lg": {
+                  "value": "14px",
+                  "variable": "var(--text-base)"
+                }
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "gap": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "transition": {
+                "value": "all 250ms",
+                "variable": "var(--duration-normal)"
+              }
+            },
+            "variants": [
+              "default",
+              "secondary",
+              "destructive",
+              "outline",
+              "ghost",
+              "link"
+            ],
+            "sizes": [
+              "default",
+              "sm",
+              "lg",
+              "icon"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "alerts",
+        "name": "Alerts & Notifications",
+        "description": "Alert boxes, dialogs, and notification toasts",
+        "components": [
+          {
+            "id": "alert",
+            "name": "Alert",
+            "description": "Alert box for important messages",
+            "code": "<Alert>\\n  <Info className=\"h-4 w-4\" />\\n  <AlertTitle>Note</AlertTitle>\\n  <AlertDescription>Message</AlertDescription>\\n</Alert>",
+            "colors": [
+              {
+                "name": "Info",
+                "hex": "#0096E1",
+                "usage": "Info alert accent"
+              },
+              {
+                "name": "Error",
+                "hex": "#ED5958",
+                "usage": "Destructive alert background"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "data-display",
+        "name": "Data Display",
+        "description": "Tables, cards, badges, and data presentation components",
+        "components": [
+          {
+            "id": "table",
+            "name": "Table",
+            "description": "Tabular data display",
+            "code": "<Table>\\n  <TableHeader>\\n    <TableRow>\\n      <TableHead>Column</TableHead>\\n    </TableRow>\\n  </TableHeader>\\n  <TableBody>\\n    <TableRow>\\n      <TableCell>Data</TableCell>\\n    </TableRow>\\n  </TableBody>\\n</Table>",
+            "colors": [
+              {
+                "name": "Border",
+                "hex": "#E9E9E9",
+                "usage": "Table borders"
+              }
+            ],
+            "technicalDetails": {
+              "fontSize": "var(--text-sm)"
+            }
+          },
+          {
+            "id": "badge-generic",
+            "name": "Badge",
+            "description": "Generic badge component for labels and counts",
+            "code": "<Badge variant=\"default\">Badge</Badge>",
+            "colors": [
+              {
+                "name": "Background",
+                "hex": "#7A8EA9",
+                "usage": "Default badge background"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius-badge)",
+              "fontSize": "var(--text-xs)",
+              "fontWeight": "var(--font-weight-medium)"
+            },
+            "styleTokens": {
+              "paddingHorizontal": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "paddingVertical": {
+                "value": "4px",
+                "variable": "var(--spacing-1)"
+              },
+              "borderRadius": {
+                "value": "4px",
+                "variable": "var(--radius-badge)"
+              },
+              "fontSize": {
+                "value": "10px",
+                "variable": "var(--text-xs)"
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "whiteSpace": {
+                "value": "nowrap"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "navigation",
+        "name": "Navigation",
+        "description": "Tabs, menus, breadcrumbs, and navigation controls",
+        "components": [
+          {
+            "id": "tabs",
+            "name": "Tabs",
+            "description": "Tabbed navigation interface",
+            "code": "<Tabs defaultValue=\"tab1\">\\n  <TabsList>\\n    <TabsTrigger value=\"tab1\">Tab 1</TabsTrigger>\\n  </TabsList>\\n  <TabsContent value=\"tab1\">Content</TabsContent>\\n</Tabs>",
+            "colors": [
+              {
+                "name": "Active",
+                "hex": "#7A8EA9",
+                "usage": "Active tab background"
+              }
+            ],
+            "technicalDetails": {
+              "borderRadius": "var(--radius)"
+            }
+          }
+        ]
+      }
+    ],
+    "business": [
+      {
+        "id": "status-badges",
+        "name": "Status Badges",
+        "description": "Business-specific status indicators for bookings, quotes, runs, items, and legs",
+        "components": [
+          {
+            "id": "booking-status",
+            "name": "Booking Status",
+            "description": "Status indicators for bookings throughout their lifecycle",
+            "code": "<Badge style={{ backgroundColor: '#F2CA3B', color: '#1A1A1A' }}>Pending</Badge>",
+            "statuses": [
+              {
+                "value": "pending",
+                "label": "Pending",
+                "color": "#F2CA3B",
+                "textColor": "#1A1A1A",
+                "brandColor": "Warning Main 600"
+              },
+              {
+                "value": "pending-shipper",
+                "label": "Pending Shipper",
+                "color": "#F2CA3B",
+                "textColor": "#1A1A1A",
+                "brandColor": "Warning Main 600"
+              },
+              {
+                "value": "booked",
+                "label": "Booked",
+                "color": "#0096E1",
+                "textColor": "#FFFFFF",
+                "brandColor": "Secondary Main 400"
+              },
+              {
+                "value": "allocated",
+                "label": "Allocated",
+                "color": "#9A2380",
+                "textColor": "#FFFFFF",
+                "brandColor": "Quaternary Main 500"
+              },
+              {
+                "value": "in-progress",
+                "label": "In Progress",
+                "color": "#EA9C2E",
+                "textColor": "#FFFFFF",
+                "brandColor": "Warning Dark 800"
+              },
+              {
+                "value": "completed",
+                "label": "Completed",
+                "color": "#9ACF30",
+                "textColor": "#1A1A1A",
+                "brandColor": "Success Main 500"
+              },
+              {
+                "value": "invoiced",
+                "label": "Invoiced",
+                "color": "#5D8916",
+                "textColor": "#FFFFFF",
+                "brandColor": "Success Darker 900"
+              },
+              {
+                "value": "cancelled",
+                "label": "Cancelled",
+                "color": "#7B7B7B",
+                "textColor": "#FFFFFF",
+                "brandColor": "Gray Main 500"
+              },
+              {
+                "value": "exception",
+                "label": "Exception",
+                "color": "#ED5958",
+                "textColor": "#FFFFFF",
+                "brandColor": "Error Main 400"
+              },
+              {
+                "value": "rejected",
+                "label": "Rejected",
+                "color": "#ED5958",
+                "textColor": "#FFFFFF",
+                "brandColor": "Error Main 400"
+              }
+            ],
+            "styleTokens": {
+              "paddingHorizontal": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "paddingVertical": {
+                "value": "4px",
+                "variable": "var(--spacing-1)"
+              },
+              "borderRadius": {
+                "value": "4px",
+                "variable": "var(--radius-badge)"
+              },
+              "fontSize": {
+                "value": "10px",
+                "variable": "var(--text-xs)"
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "whiteSpace": {
+                "value": "nowrap"
+              }
+            }
+          },
+          {
+            "id": "quote-request-status",
+            "name": "Quote Request Status",
+            "description": "Status badges for quote requests (shipper creates these)",
+            "code": "<Badge style={{ backgroundColor: '#0096E1', color: '#FFFFFF' }}>Active</Badge>",
+            "statuses": [
+              {
+                "value": "active",
+                "label": "Active",
+                "color": "#0096E1",
+                "textColor": "#FFFFFF",
+                "brandColor": "Secondary Main 400"
+              },
+              {
+                "value": "expired",
+                "label": "Expired",
+                "color": "#7B7B7B",
+                "textColor": "#FFFFFF",
+                "brandColor": "Gray Main 500"
+              },
+              {
+                "value": "completed",
+                "label": "Completed",
+                "color": "#9ACF30",
+                "textColor": "#1A1A1A",
+                "brandColor": "Success Main 500"
+              },
+              {
+                "value": "cancelled",
+                "label": "Cancelled",
+                "color": "#7B7B7B",
+                "textColor": "#FFFFFF",
+                "brandColor": "Gray Main 500"
+              }
+            ],
+            "styleTokens": {
+              "paddingHorizontal": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "paddingVertical": {
+                "value": "4px",
+                "variable": "var(--spacing-1)"
+              },
+              "borderRadius": {
+                "value": "4px",
+                "variable": "var(--radius-badge)"
+              },
+              "fontSize": {
+                "value": "10px",
+                "variable": "var(--text-xs)"
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "whiteSpace": {
+                "value": "nowrap"
+              }
+            }
+          },
+          {
+            "id": "quote-status",
+            "name": "Quote Status (Carrier Response)",
+            "description": "Status badges for individual carrier quotes (carrier responses to quote requests)",
+            "code": "<Badge style={{ backgroundColor: '#F2CA3B', color: '#1A1A1A' }}>Pending</Badge>",
+            "statuses": [
+              {
+                "value": "pending",
+                "label": "Pending",
+                "color": "#F2CA3B",
+                "textColor": "#1A1A1A",
+                "brandColor": "Warning Main 600"
+              },
+              {
+                "value": "accepted",
+                "label": "Accepted",
+                "color": "#9ACF30",
+                "textColor": "#1A1A1A",
+                "brandColor": "Success Main 500"
+              },
+              {
+                "value": "rejected",
+                "label": "Rejected",
+                "color": "#ED5958",
+                "textColor": "#FFFFFF",
+                "brandColor": "Error Main 400"
+              },
+              {
+                "value": "expired",
+                "label": "Expired",
+                "color": "#7B7B7B",
+                "textColor": "#FFFFFF",
+                "brandColor": "Gray Main 500"
+              },
+              {
+                "value": "withdrawn",
+                "label": "Withdrawn",
+                "color": "#7B7B7B",
+                "textColor": "#FFFFFF",
+                "brandColor": "Gray Main 500"
+              }
+            ],
+            "styleTokens": {
+              "paddingHorizontal": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "paddingVertical": {
+                "value": "4px",
+                "variable": "var(--spacing-1)"
+              },
+              "borderRadius": {
+                "value": "4px",
+                "variable": "var(--radius-badge)"
+              },
+              "fontSize": {
+                "value": "10px",
+                "variable": "var(--text-xs)"
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "whiteSpace": {
+                "value": "nowrap"
+              }
+            }
+          },
+          {
+            "id": "run-status",
+            "name": "Run Status",
+            "description": "Status indicators for transport runs",
+            "code": "<Badge style={{ backgroundColor: '#0096E1', color: '#FFFFFF' }}>Booked</Badge>",
+            "statuses": [
+              {
+                "value": "booked",
+                "label": "Booked",
+                "color": "#0096E1",
+                "textColor": "#FFFFFF",
+                "brandColor": "Secondary Main 400"
+              },
+              {
+                "value": "allocated",
+                "label": "Allocated",
+                "color": "#9A2380",
+                "textColor": "#FFFFFF",
+                "brandColor": "Quaternary Main 500"
+              },
+              {
+                "value": "acknowledged",
+                "label": "Acknowledged",
+                "color": "#405E8A",
+                "textColor": "#FFFFFF",
+                "brandColor": "Primary Main 500"
+              },
+              {
+                "value": "in-progress",
+                "label": "In Progress",
+                "color": "#EA9C2E",
+                "textColor": "#FFFFFF",
+                "brandColor": "Warning Dark 800"
+              },
+              {
+                "value": "completed",
+                "label": "Completed",
+                "color": "#9ACF30",
+                "textColor": "#1A1A1A",
+                "brandColor": "Success Main 500"
+              }
+            ],
+            "styleTokens": {
+              "paddingHorizontal": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "paddingVertical": {
+                "value": "4px",
+                "variable": "var(--spacing-1)"
+              },
+              "borderRadius": {
+                "value": "4px",
+                "variable": "var(--radius-badge)"
+              },
+              "fontSize": {
+                "value": "10px",
+                "variable": "var(--text-xs)"
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "whiteSpace": {
+                "value": "nowrap"
+              }
+            }
+          },
+          {
+            "id": "item-status",
+            "name": "Item Status",
+            "description": "Status indicators for individual items/vehicles (aggregated from leg statuses). Items do NOT have 'At Collection' or 'At Delivery' - only legs do.",
+            "code": "<Badge style={{ backgroundColor: '#F2CA3B', color: '#1A1A1A' }}>Pending</Badge>",
+            "statuses": [
+              {
+                "value": "pending",
+                "label": "Pending",
+                "color": "#F2CA3B",
+                "textColor": "#1A1A1A",
+                "brandColor": "Warning Main 600"
+              },
+              {
+                "value": "booked",
+                "label": "Booked",
+                "color": "#0096E1",
+                "textColor": "#FFFFFF",
+                "brandColor": "Secondary Main 400"
+              },
+              {
+                "value": "allocated",
+                "label": "Allocated",
+                "color": "#9A2380",
+                "textColor": "#FFFFFF",
+                "brandColor": "Quaternary Main 500"
+              },
+              {
+                "value": "collected",
+                "label": "Collected",
+                "color": "#EA9C2E",
+                "textColor": "#FFFFFF",
+                "brandColor": "Warning Dark 800"
+              },
+              {
+                "value": "delivered",
+                "label": "Delivered",
+                "color": "#9ACF30",
+                "textColor": "#1A1A1A",
+                "brandColor": "Success Main 500"
+              },
+              {
+                "value": "exception",
+                "label": "Exception",
+                "color": "#ED5958",
+                "textColor": "#FFFFFF",
+                "brandColor": "Error Main 400"
+              },
+              {
+                "value": "cancelled",
+                "label": "Cancelled",
+                "color": "#7B7B7B",
+                "textColor": "#FFFFFF",
+                "brandColor": "Gray Main 500"
+              }
+            ],
+            "styleTokens": {
+              "paddingHorizontal": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "paddingVertical": {
+                "value": "4px",
+                "variable": "var(--spacing-1)"
+              },
+              "borderRadius": {
+                "value": "4px",
+                "variable": "var(--radius-badge)"
+              },
+              "fontSize": {
+                "value": "10px",
+                "variable": "var(--text-xs)"
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "whiteSpace": {
+                "value": "nowrap"
+              }
+            }
+          },
+          {
+            "id": "leg-status",
+            "name": "Leg Status",
+            "description": "Status badges for transport legs (journey segments: collection → delivery). Collected = In Transit.",
+            "code": "<Badge style={{ backgroundColor: '#0096E1', color: '#FFFFFF' }}>Booked</Badge>",
+            "statuses": [
+              {
+                "value": "booked",
+                "label": "Booked",
+                "color": "#0096E1",
+                "textColor": "#FFFFFF",
+                "brandColor": "Secondary Main 400"
+              },
+              {
+                "value": "allocated",
+                "label": "Allocated",
+                "color": "#9A2380",
+                "textColor": "#FFFFFF",
+                "brandColor": "Quaternary Main 500"
+              },
+              {
+                "value": "at-collection",
+                "label": "At Collection",
+                "color": "#F2CA3B",
+                "textColor": "#1A1A1A",
+                "brandColor": "Warning Main 600"
+              },
+              {
+                "value": "collected",
+                "label": "Collected",
+                "color": "#EA9C2E",
+                "textColor": "#FFFFFF",
+                "brandColor": "Warning Dark 800"
+              },
+              {
+                "value": "at-delivery",
+                "label": "At Delivery",
+                "color": "#BBDE76",
+                "textColor": "#1A1A1A",
+                "brandColor": "Success Light 300"
+              },
+              {
+                "value": "delivered",
+                "label": "Delivered",
+                "color": "#9ACF30",
+                "textColor": "#1A1A1A",
+                "brandColor": "Success Main 500"
+              },
+              {
+                "value": "exception",
+                "label": "Exception",
+                "color": "#ED5958",
+                "textColor": "#FFFFFF",
+                "brandColor": "Error Main 400"
+              }
+            ],
+            "styleTokens": {
+              "paddingHorizontal": {
+                "value": "8px",
+                "variable": "var(--spacing-2)"
+              },
+              "paddingVertical": {
+                "value": "4px",
+                "variable": "var(--spacing-1)"
+              },
+              "borderRadius": {
+                "value": "4px",
+                "variable": "var(--radius-badge)"
+              },
+              "fontSize": {
+                "value": "10px",
+                "variable": "var(--text-xs)"
+              },
+              "fontWeight": {
+                "value": "600",
+                "variable": "var(--font-weight-medium)"
+              },
+              "fontFamily": {
+                "value": "Lato, sans-serif",
+                "variable": "var(--font-family-base)"
+              },
+              "lineHeight": {
+                "value": "1.5",
+                "variable": "1.5"
+              },
+              "display": {
+                "value": "inline-flex"
+              },
+              "alignItems": {
+                "value": "center"
+              },
+              "justifyContent": {
+                "value": "center"
+              },
+              "whiteSpace": {
+                "value": "nowrap"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "storybook": {
+    "stories": [
+      {
+        "title": "Functional/Form Controls/Input",
+        "component": "Input",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Form Controls/Textarea",
+        "component": "Textarea",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Form Controls/Select",
+        "component": "Select",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Form Controls/Checkbox",
+        "component": "Checkbox",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Form Controls/Radio Group",
+        "component": "Radio Group",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Form Controls/Switch",
+        "component": "Switch",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Buttons/Button",
+        "component": "Button",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        },
+        "argTypes": {
+          "variant": {
+            "control": "select",
+            "options": [
+              "default",
+              "secondary",
+              "destructive",
+              "outline",
+              "ghost",
+              "link"
+            ]
+          },
+          "size": {
+            "control": "select",
+            "options": [
+              "default",
+              "sm",
+              "lg",
+              "icon"
+            ]
+          }
+        }
+      },
+      {
+        "title": "Functional/Alerts & Notifications/Alert",
+        "component": "Alert",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Data Display/Table",
+        "component": "Table",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Data Display/Badge",
+        "component": "Badge",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Functional/Navigation/Tabs",
+        "component": "Tabs",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        }
+      },
+      {
+        "title": "Business/Status Badges/Booking Status",
+        "component": "Booking Status",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        },
+        "argTypes": {
+          "status": {
+            "control": "select",
+            "options": [
+              "pending",
+              "pending-shipper",
+              "booked",
+              "allocated",
+              "in-progress",
+              "completed",
+              "invoiced",
+              "cancelled",
+              "exception",
+              "rejected"
+            ]
+          }
+        }
+      },
+      {
+        "title": "Business/Status Badges/Quote Request Status",
+        "component": "Quote Request Status",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        },
+        "argTypes": {
+          "status": {
+            "control": "select",
+            "options": [
+              "active",
+              "expired",
+              "completed",
+              "cancelled"
+            ]
+          }
+        }
+      },
+      {
+        "title": "Business/Status Badges/Quote Status (Carrier Response)",
+        "component": "Quote Status (Carrier Response)",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        },
+        "argTypes": {
+          "status": {
+            "control": "select",
+            "options": [
+              "pending",
+              "accepted",
+              "rejected",
+              "expired",
+              "withdrawn"
+            ]
+          }
+        }
+      },
+      {
+        "title": "Business/Status Badges/Run Status",
+        "component": "Run Status",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        },
+        "argTypes": {
+          "status": {
+            "control": "select",
+            "options": [
+              "booked",
+              "allocated",
+              "acknowledged",
+              "in-progress",
+              "completed"
+            ]
+          }
+        }
+      },
+      {
+        "title": "Business/Status Badges/Item Status",
+        "component": "Item Status",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        },
+        "argTypes": {
+          "status": {
+            "control": "select",
+            "options": [
+              "pending",
+              "booked",
+              "allocated",
+              "collected",
+              "delivered",
+              "exception",
+              "cancelled"
+            ]
+          }
+        }
+      },
+      {
+        "title": "Business/Status Badges/Leg Status",
+        "component": "Leg Status",
+        "tags": [
+          "autodocs"
+        ],
+        "parameters": {
+          "layout": "centered"
+        },
+        "argTypes": {
+          "status": {
+            "control": "select",
+            "options": [
+              "booked",
+              "allocated",
+              "at-collection",
+              "collected",
+              "at-delivery",
+              "delivered",
+              "exception"
+            ]
+          }
+        }
+      }
+    ],
+    "tokenStories": [
+      {
+        "title": "Design Tokens/Colors",
+        "parameters": {
+          "layout": "fullscreen"
+        }
+      },
+      {
+        "title": "Design Tokens/Typography",
+        "parameters": {
+          "layout": "fullscreen"
+        }
+      },
+      {
+        "title": "Design Tokens/Spacing",
+        "parameters": {
+          "layout": "fullscreen"
+        }
+      }
+    ]
+  }
+}

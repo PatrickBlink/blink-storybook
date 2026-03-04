@@ -1,0 +1,85 @@
+:root {
+  --primary-500: #405E8A;
+  --primary-700: #314C75;
+  --secondary-400: #0096E1;
+  --secondary-600: #0079D0;
+  --success-500: #9ACF30;
+  --success-700: #73AA1C;
+  --error-400: #E73F56;
+  --error-500: #D62839;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+
+  --radius-button: 6px;
+}
+
+.button {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--text-base);
+}
+
+/* Sizes */
+.sm {
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: 12px;
+}
+
+.md {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: 14px;
+}
+
+.lg {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: 16px;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--primary-500);
+  color: white;
+}
+
+.primary:hover:not(.disabled) {
+  background-color: var(--primary-700);
+}
+
+.secondary {
+  background-color: var(--secondary-400);
+  color: white;
+}
+
+.secondary:hover:not(.disabled) {
+  background-color: var(--secondary-600);
+}
+
+.success {
+  background-color: var(--success-500);
+  color: white;
+}
+
+.success:hover:not(.disabled) {
+  background-color: var(--success-700);
+}
+
+.error {
+  background-color: var(--error-400);
+  color: white;
+}
+
+.error:hover:not(.disabled) {
+  background-color: var(--error-500);
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -1,0 +1,74 @@
+/* Design System Tokens */
+:root {
+  /* Colors */
+  --primary-100: #C4CDDB;
+  --primary-300: #7A8EA9;
+  --primary-500: #405E8A;
+  --primary-700: #314C75;
+  --primary-900: #23324F;
+
+  --secondary-50: #E0F0F9;
+  --secondary-200: #80C1EB;
+  --secondary-400: #0096E1;
+  --secondary-600: #0079D0;
+  --secondary-800: #0058AD;
+
+  --error-50: #FEECEF;
+  --error-100: #FDD9E2;
+  --error-400: #E73F56;
+
+  --success-100: #E2F1C4;
+  --success-500: #9ACF30;
+
+  /* Spacing */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+
+  /* Typography */
+  --text-base: 14px;
+  --text-sm: 12px;
+  --text-lg: 16px;
+
+  /* Radius */
+  --radius-input: 4px;
+  --radius-button: 6px;
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--text-base);
+  font-family: 'Lato', sans-serif;
+  border: 1px solid #E9E9E9;
+  border-radius: var(--radius-input);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--secondary-400);
+  box-shadow: 0 0 0 3px rgba(0, 150, 225, 0.1);
+}
+
+.input.error {
+  border-color: var(--error-400);
+}
+
+.input.error:focus {
+  box-shadow: 0 0 0 3px rgba(231, 63, 86, 0.1);
+}
+
+.input.disabled {
+  background-color: #F5F5F5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input::placeholder {
+  color: #999;
+}
