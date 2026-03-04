@@ -1,20 +1,16 @@
-[09:44:42.014] [INFO] storybook v10.2.4
-[09:44:42.317] [DEBUG] Getting package.json info for /Users/patrickcharriere/Downloads/storybook/package.json...
-[09:44:42.915] [DEBUG] Serving static files from node_modules/@chromatic-com/storybook/assets at /addon-visual-tests-assets
-[09:44:42.915] [INFO] Starting...
-[09:44:43.019] [DEBUG] Starting preview..
-[09:44:43.021] [WARN] 🚨 Unable to index files:
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--primary
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--secondary
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--large
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--small
-[09:44:43.022] [ERROR] Failed to build the preview
-[09:44:43.023] [ERROR] Error: [38;2;241;97;97mUnable to index files:
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--primary
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--secondary
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--large
-- ./src/components/Button.stories.jsx,./src/stories/Button.stories.js: Duplicate stories with id: example-button--small[39m
-    at _StoryIndexGenerator.getIndexAndStats (file://./node_modules/storybook/dist/core-server/index.js:6092:15)
+[19:11:19.022] [INFO] storybook v10.2.4
+[19:11:20.844] [DEBUG] Getting package.json info for /home/patrick/.openclaw/workspace/work/blink-storybook/package.json...
+[19:11:31.487] [DEBUG] Serving static files from node_modules/@chromatic-com/storybook/assets at /addon-visual-tests-assets
+[19:11:31.493] [INFO] Starting...
+[19:11:36.184] [DEBUG] Starting preview..
+[19:11:36.275] [WARN] 🚨 Unable to index files:
+- ./src/tokens/BrandGuidelines.stories.mdx: Invariant failed: No matching indexer found for /home/patrick/.openclaw/workspace/work/blink-storybook/src/tokens/BrandGuidelines.stories.mdx
+- ./src/tokens/DesignTokens.stories.mdx: Invariant failed: No matching indexer found for /home/patrick/.openclaw/workspace/work/blink-storybook/src/tokens/DesignTokens.stories.mdx
+[19:11:36.297] [ERROR] Failed to build the preview
+[19:11:36.301] [ERROR] Error: [38;2;241;97;97mUnable to index files:
+- ./src/tokens/BrandGuidelines.stories.mdx: Invariant failed: No matching indexer found for ./src/tokens/BrandGuidelines.stories.mdx
+- ./src/tokens/DesignTokens.stories.mdx: Invariant failed: No matching indexer found for ./src/tokens/DesignTokens.stories.mdx[39m
+    at _StoryIndexGenerator.getIndexAndStats (file://./node_modules/storybook/dist/core-server/index.js:6082:15)
     at async _StoryIndexGenerator.getIndex (file://./node_modules/storybook/dist/core-server/index.js:6071:13)
     at async getOptimizeDeps (file://./node_modules/@storybook/builder-vite/dist/index.js:1845:15)
     at async createViteServer (file://./node_modules/@storybook/builder-vite/dist/index.js:1871:19)
@@ -24,5 +20,5 @@
     at async buildDevStandalone (file://./node_modules/storybook/dist/core-server/index.js:7577:66)
     at async withTelemetry (file://./node_modules/storybook/dist/_node-chunks/chunk-BIHXZHDE.js:218:12)
     at async dev (file://./node_modules/storybook/dist/bin/core.js:2734:3)
-[09:44:43.024] [WARN] Broken build, fix the error above.
+[19:11:36.348] [WARN] Broken build, fix the error above.
 You may need to refresh the browser.
