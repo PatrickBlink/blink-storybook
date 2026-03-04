@@ -1,0 +1,92 @@
+.radioWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radioWrapper.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.input {
+  display: none;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+}
+
+.radioCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  transition: all 200ms ease;
+  flex-shrink: 0;
+  background-color: #ffffff;
+}
+
+.input:checked ~ .label .radioCircle {
+  border-color: #77c2f7;
+  background-color: #77c2f7;
+  box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.input:focus-visible ~ .label .radioCircle {
+  outline: 2px solid #77c2f7;
+  outline-offset: 2px;
+}
+
+.input:disabled ~ .label {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: not-allowed;
+}
+
+.input:disabled ~ .label .radioCircle {
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.radioGroup {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.radioGroup.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.legend {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
