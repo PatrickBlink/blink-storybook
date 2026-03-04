@@ -1,0 +1,189 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundation/Design Tokens" />
+
+# Design Tokens
+
+Complete design system tokens for Blink.
+
+## Color Palette
+
+### Primary Colors
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', marginBottom: '32px' }}>
+  <div>
+    <div style={{ width: '100%', height: '120px', backgroundColor: '#77c2f7', borderRadius: '8px', marginBottom: '12px' }}></div>
+    <h4 style={{ margin: '0 0 4px 0' }}>Primary Blue</h4>
+    <code>#77c2f7</code>
+    <p style={{ fontSize: '12px', color: '#666', margin: '8px 0 0 0' }}>Links, form focus, checked states, badges</p>
+  </div>
+  
+  <div>
+    <div style={{ width: '100%', height: '120px', backgroundColor: '#FAA61A', borderRadius: '8px', marginBottom: '12px' }}></div>
+    <h4 style={{ margin: '0 0 4px 0' }}>Primary Orange</h4>
+    <code>#FAA61A</code>
+    <p style={{ fontSize: '12px', color: '#666', margin: '8px 0 0 0' }}>Primary buttons, CTAs</p>
+  </div>
+
+  <div>
+    <div style={{ width: '100%', height: '120px', backgroundColor: '#1A2332', borderRadius: '8px', marginBottom: '12px' }}></div>
+    <h4 style={{ margin: '0 0 4px 0' }}>Dark Navy</h4>
+    <code>#1A2332</code>
+    <p style={{ fontSize: '12px', color: '#666', margin: '8px 0 0 0' }}>Header, navigation</p>
+  </div>
+
+  <div>
+    <div style={{ width: '100%', height: '120px', backgroundColor: '#9ACF30', borderRadius: '8px', marginBottom: '12px' }}></div>
+    <h4 style={{ margin: '0 0 4px 0' }}>Success Green</h4>
+    <code>#9ACF30</code>
+    <p style={{ fontSize: '12px', color: '#666', margin: '8px 0 0 0' }}>Success states, confirmations</p>
+  </div>
+
+  <div>
+    <div style={{ width: '100%', height: '120px', backgroundColor: '#ED5958', borderRadius: '8px', marginBottom: '12px' }}></div>
+    <h4 style={{ margin: '0 0 4px 0' }}>Error Red</h4>
+    <code>#ED5958</code>
+    <p style={{ fontSize: '12px', color: '#666', margin: '8px 0 0 0' }}>Errors, validation, alerts</p>
+  </div>
+</div>
+
+### Neutral Colors
+
+| Color | Hex | Usage |
+|-------|-----|-------|
+| White | `#FFFFFF` | Form cards, input fields, backgrounds |
+| Light Gray | `#F5F5F5` / `#FAFAFA` | Page backgrounds, form backgrounds |
+| Text Primary | `rgba(0, 0, 0, 0.87)` | Main text |
+| Text Secondary | `rgba(0, 0, 0, 0.54)` | Secondary text, labels |
+| Text Disabled | `rgba(0, 0, 0, 0.38)` | Disabled states |
+| Dividers | `rgba(0, 0, 0, 0.12)` | Borders, dividers |
+
+---
+
+## Typography
+
+### Font Family
+
+**Primary:** Lato (sans-serif)  
+**Fallback:** Roboto
+
+Loaded from Google Fonts with `swap` strategy (shows fallback immediately).
+
+### Font Scale
+
+| Size | Weight | Usage |
+|------|--------|-------|
+| 32px | 300 (Light) | Large headings |
+| 22px | 400 (Regular) | Page titles |
+| 18px | 500 (Medium) | Section headings |
+| 16px | 400 (Regular) | Body text, buttons |
+| 14px | 400 (Regular) | Secondary text, form labels |
+| 12px | 400 (Regular) | Helper text, captions |
+
+### Font Weights
+
+- **300** — Light (headlines)
+- **400** — Regular (body, default)
+- **500** — Medium (labels, emphasis)
+- **600** — Semi-bold (buttons, strong emphasis)
+- **700** — Bold (rare, strong emphasis)
+
+---
+
+## Spacing
+
+Based on 4px grid system:
+
+| Token | Size | Usage |
+|-------|------|-------|
+| `xs` | 4px | Minimal gaps |
+| `sm` | 8px | Component internal spacing |
+| `md` | 16px | Component gaps, form fields |
+| `lg` | 24px | Section spacing |
+| `xl` | 32px | Major section gaps |
+| `2xl` | 48px | Page-level spacing |
+
+---
+
+## Border Radius
+
+| Token | Radius | Usage |
+|-------|--------|-------|
+| `sm` | 3px | Input fields, cards (subtle) |
+| `md` | 4px | Default for most components |
+| `lg` | 8px | Larger cards, panels |
+| `full` | 100px | Buttons, badges (pill-shaped) |
+
+---
+
+## Shadows
+
+### Elevation 1 (Cards, Dropdowns)
+```css
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+```
+
+### Elevation 2 (Modals, Dialogs)
+```css
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+```
+
+### Elevation 3 (Floating Actions)
+```css
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+```
+
+---
+
+## Responsive Breakpoints
+
+Bootstrap-based grid system:
+
+| Breakpoint | Size | Device |
+|------------|------|--------|
+| `xs` | 0px | Mobile (default) |
+| `sm` | 576px | Small tablet |
+| `md` | 768px | Tablet |
+| `lg` | 992px | Desktop |
+| `xl` | 1200px | Large desktop |
+| `xxl` | 1400px | Extra large |
+
+---
+
+## Transitions
+
+Default timing for smooth interactions:
+
+```css
+transition: all 200ms ease;
+```
+
+- **Fast:** 100ms (micro-interactions)
+- **Normal:** 200ms (default interactions)
+- **Slow:** 300ms (complex animations)
+
+---
+
+## Usage Guidelines
+
+### Colors
+- **Primary Blue (#77c2f7)** — Use for interactive elements (links, focus states, selected)
+- **Primary Orange (#FAA61A)** — Use only for primary action buttons
+- **Dark Navy (#1A2332)** — Use for header/navigation only
+- **Success Green (#9ACF30)** — Use for positive states (success, approved)
+- **Error Red (#ED5958)** — Use for errors, warnings, destructive actions
+
+### Typography
+- Always use Lato as primary font
+- Maintain 1.5x line-height for body text
+- Use font-weight 600+ only for emphasis
+
+### Spacing
+- Always snap to 4px grid
+- Maintain consistent gaps between sections
+- Use `md` (16px) as default component gap
+
+### Accessibility
+- Maintain minimum 4.5:1 contrast ratio for text
+- Error Red and Orange meet WCAG AA standards
+- All colors tested for colorblind accessibility
