@@ -1,8 +1,8 @@
 .button {
   font-family: 'Lato', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
-  border-radius: 4px;
+  border-radius: 100px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -67,21 +67,24 @@
 
 /* Sizes */
 .sm {
-  padding: 6px 12px;
+  padding: 6px 14px;
   font-size: 12px;
   height: 32px;
+  font-weight: 600;
 }
 
 .md {
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 14px;
   height: 40px;
+  font-weight: 600;
 }
 
 .lg {
-  padding: 12px 24px;
+  padding: 12px 28px;
   font-size: 16px;
   height: 48px;
+  font-weight: 600;
 }
 
 /* Icons */
