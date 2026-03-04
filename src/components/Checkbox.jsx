@@ -23,7 +23,19 @@ export const Checkbox = ({
       />
       <label htmlFor={id} className={styles.label}>
         <span className={`${styles.checkmark} ${indeterminate ? styles.indeterminate : ''}`}>
-          {checked && !indeterminate && '✓'}
+          {checked && !indeterminate && (
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className={styles.checkmarkSvg}
+            >
+              <path
+                fill="none"
+                d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                className={styles.checkmarkPath}
+              />
+            </svg>
+          )}
           {indeterminate && '−'}
         </span>
         {label}
