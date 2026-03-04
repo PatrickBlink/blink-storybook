@@ -129,6 +129,70 @@ export const Overview = {
         ]}
       />
 
+      <h2 style={{ marginTop: '40px' }}>Color Usage</h2>
+      <Table
+        headers={['Color', 'Use for', 'Do NOT use for']}
+        rows={[
+          ['Primary Blue (#77c2f7)', 'Focus states, links, checked/selected, secondary CTAs', 'Page backgrounds, primary action buttons'],
+          ['Primary Orange (#FAA61A)', 'Primary action buttons, critical CTAs', 'Links (use Blue), error states (use Red)'],
+          ['Dark Navy (#1A2332)', 'Header/navigation, primary text', 'Interactive elements, light backgrounds'],
+          ['Error Red (#ED5958)', 'Error messages, invalid fields, destructive actions', 'Success states (use Green), information (use Blue)'],
+          ['Success Green (#9ACF30)', 'Success messages, completed states, confirmations', 'Errors (use Red), links (use Blue)'],
+        ]}
+      />
+
+      <h2 style={{ marginTop: '40px' }}>Writing Guidelines</h2>
+
+      <h3>Buttons & CTAs</h3>
+      <ul>
+        <li>Action-oriented verbs: Book, Create, Export, Send, Confirm</li>
+        <li>Clear and concise: 1–3 words max</li>
+        <li>Never apologetic: ✗ "Sorry, please try again" → ✓ "Try again"</li>
+      </ul>
+
+      <h3>Form Labels</h3>
+      <ul>
+        <li>Specific: ✓ "Phone Number" not ✗ "Phone"</li>
+        <li>Required indicator: Asterisk (*) for required fields</li>
+        <li>Helpful hints below field: "Format: +1 (555) 000-0000"</li>
+      </ul>
+
+      <h3>Error Messages</h3>
+      <Table
+        headers={['Avoid', 'Use instead']}
+        rows={[
+          ['Error', 'Email address already in use'],
+          ['Invalid', 'Use 8+ characters, including uppercase'],
+          ["Wrong!", "Doesn't match password"],
+        ]}
+      />
+
+      <h3>Empty States</h3>
+      <ul>
+        <li>Acknowledge: "No bookings yet"</li>
+        <li>Encourage action: "Create your first booking"</li>
+        <li>Provide path: "Click 'New Booking' to get started"</li>
+      </ul>
+
+      <h3>Success Messages</h3>
+      <ul>
+        <li>Celebratory: "Booking confirmed!"</li>
+        <li>Next step: "Driver assigned. You'll receive updates via SMS."</li>
+        <li>Link to action: "View booking details or create another"</li>
+      </ul>
+
+      <h2 style={{ marginTop: '40px' }}>Brand Expression Matrix</h2>
+      <Table
+        headers={['Situation', 'Expression', 'Example']}
+        rows={[
+          ['Happy Path', 'Celebratory, empowering', 'Booking confirmed! Driver assigned.'],
+          ['Error', 'Helpful, specific', 'Phone must be 10+ digits. Try +1 (555) 000-0000'],
+          ['Loading', 'Transparent, patient', 'Loading bookings... (with spinner)'],
+          ['Empty', 'Encouraging, supportive', 'No labels yet. Create one to organize bookings.'],
+          ['Success', 'Affirming', '✓ Booking updated'],
+        ]}
+      />
+
       <h2 style={{ marginTop: '40px' }}>When in Doubt</h2>
       <div style={{ padding: '20px', backgroundColor: '#f5f5f5', borderLeft: '4px solid #77c2f7', borderRadius: '4px', marginTop: '20px' }}>
         <p style={{ margin: 0, fontStyle: 'italic' }}>
