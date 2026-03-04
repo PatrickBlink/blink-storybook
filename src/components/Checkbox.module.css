@@ -45,13 +45,15 @@
 }
 
 .input:checked ~ .label .checkmark {
-  border-color: #77c2f7;
-  background-color: #77c2f7;
+  border-color: #1e3a5f;
+  background-color: #1e3a5f;
+  color: #ffffff;
 }
 
 .input:checked ~ .label .checkmark.indeterminate {
-  border-color: #77c2f7;
-  background-color: #77c2f7;
+  border-color: #1e3a5f;
+  background-color: #1e3a5f;
+  color: #ffffff;
 }
 
 .input:focus-visible ~ .label .checkmark {
