@@ -3,7 +3,7 @@
 .dateWrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 4px;
   width: 100%;
 }
 
@@ -11,73 +11,71 @@
   font-family: var(--font-family);
   font-size: var(--font-size-label);
   font-weight: var(--font-weight-label);
-  color: var(--color-text-primary);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-label);
-  margin-bottom: 4px;
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+  margin-bottom: 8px;
 }
 
 .required {
   color: var(--color-error);
   font-weight: 700;
+  margin-left: 2px;
 }
 
 .dateContainer {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: 0 var(--spacing-md);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--border-radius-input);
   background-color: var(--color-background);
-  box-shadow: var(--shadow-sm);
+  border: none;
+  border-bottom: var(--underline-height-inactive) solid var(--underline-color-inactive);
   transition: var(--transition-default);
-  box-sizing: border-box;
-  min-height: 40px;
 }
 
-.dateContainer:hover:not(.disabled) {
-  border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-md);
+.dateContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--underline-height-active);
+  background-color: var(--underline-color-active);
+  transform: scaleX(0);
+  transition: var(--transition-default);
+  transform-origin: center;
 }
 
 .dateContainer:focus-within {
-  border-color: var(--color-primary);
-  background-color: var(--color-background);
-  box-shadow: var(--shadow-focus-primary);
-  outline: none;
+  border-bottom-color: var(--underline-color-active);
+}
+
+.dateContainer:focus-within::after {
+  transform: scaleX(1);
 }
 
 .dateContainer.error {
-  border-color: var(--color-error);
-  background-color: var(--color-background);
-  box-shadow: var(--shadow-sm);
-}
-
-.dateContainer.error:hover:not(.disabled) {
-  box-shadow: var(--shadow-md);
+  border-bottom-color: var(--underline-color-error);
 }
 
 .dateContainer.error:focus-within {
-  box-shadow: var(--shadow-focus-error);
+  border-bottom-color: var(--underline-color-error);
+}
+
+.dateContainer.error::after {
+  background-color: var(--underline-color-error);
 }
 
 .dateContainer.disabled {
-  background-color: var(--color-background-disabled);
+  border-bottom-color: var(--underline-color-inactive);
   cursor: not-allowed;
-  border-color: var(--color-border);
-  box-shadow: none;
+  opacity: 0.5;
 }
 
 .input {
   flex: 1;
   border: none;
   outline: none;
-  padding: 10px 0;
+  padding: 8px 0;
   font-family: var(--font-family);
   font-size: var(--font-size-input);
   font-weight: var(--font-weight-input);
@@ -99,15 +97,24 @@
 
 .icon {
   position: absolute;
-  right: var(--spacing-md);
+  right: 0;
   pointer-events: none;
   font-size: 18px;
   opacity: 0.6;
+  transition: var(--transition-fast);
 }
 
 .dateContainer:focus-within .icon {
   opacity: 1;
   color: var(--color-primary);
+}
+
+.dateContainer:focus-within .label {
+  color: var(--color-primary);
+}
+
+.dateContainer.error:focus-within .label {
+  color: var(--color-error);
 }
 
 .errorText {
@@ -129,30 +136,15 @@
 /* Size variants */
 .sm .input {
   font-size: 13px;
-  padding: 8px 0;
-}
-
-.sm .dateContainer {
-  padding: var(--spacing-xs) var(--spacing-md);
-  min-height: 36px;
+  padding: 6px 0;
 }
 
 .md .input {
   font-size: var(--font-size-input);
-  padding: 10px 0;
-}
-
-.md .dateContainer {
-  padding: 10px var(--spacing-md);
-  min-height: 40px;
+  padding: 8px 0;
 }
 
 .lg .input {
   font-size: 16px;
-  padding: 12px 0;
-}
-
-.lg .dateContainer {
-  padding: 12px var(--spacing-lg);
-  min-height: 48px;
+  padding: 10px 0;
 }
