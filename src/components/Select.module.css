@@ -3,7 +3,7 @@
 .selectWrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 4px;
   width: 100%;
 }
 
@@ -11,70 +11,71 @@
   font-family: var(--font-family);
   font-size: var(--font-size-label);
   font-weight: var(--font-weight-label);
-  color: var(--color-text-primary);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-label);
-  margin-bottom: 4px;
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+  margin-bottom: 8px;
 }
 
 .required {
   color: var(--color-error);
   font-weight: 700;
+  margin-left: 2px;
 }
 
 .selectContainer {
   position: relative;
   display: flex;
   align-items: center;
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--border-radius-input);
   background-color: var(--color-background);
-  box-shadow: var(--shadow-sm);
+  border: none;
+  border-bottom: var(--underline-height-inactive) solid var(--underline-color-inactive);
   transition: var(--transition-default);
-  min-height: 40px;
 }
 
-.selectContainer:hover:not(.disabled) {
-  border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-md);
+.selectContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--underline-height-active);
+  background-color: var(--underline-color-active);
+  transform: scaleX(0);
+  transition: var(--transition-default);
+  transform-origin: center;
 }
 
 .selectContainer:focus-within {
-  border-color: var(--color-primary);
-  background-color: var(--color-background);
-  box-shadow: var(--shadow-focus-primary);
-  outline: none;
+  border-bottom-color: var(--underline-color-active);
+}
+
+.selectContainer:focus-within::after {
+  transform: scaleX(1);
 }
 
 .selectContainer.error {
-  border-color: var(--color-error);
-  background-color: var(--color-background);
-  box-shadow: var(--shadow-sm);
-}
-
-.selectContainer.error:hover:not(.disabled) {
-  box-shadow: var(--shadow-md);
+  border-bottom-color: var(--underline-color-error);
 }
 
 .selectContainer.error:focus-within {
-  box-shadow: var(--shadow-focus-error);
+  border-bottom-color: var(--underline-color-error);
+}
+
+.selectContainer.error::after {
+  background-color: var(--underline-color-error);
 }
 
 .selectContainer.disabled {
-  background-color: var(--color-background-disabled);
+  border-bottom-color: var(--underline-color-inactive);
   cursor: not-allowed;
-  border-color: var(--color-border);
-  box-shadow: none;
+  opacity: 0.5;
 }
 
 .select {
   flex: 1;
   border: none;
   outline: none;
-  padding: 10px var(--spacing-md);
+  padding: 8px 0 8px 0;
   font-family: var(--font-family);
   font-size: var(--font-size-input);
   font-weight: var(--font-weight-input);
@@ -84,12 +85,8 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  padding-right: 36px;
+  padding-right: 24px;
   line-height: var(--line-height-input);
-}
-
-.select::placeholder {
-  color: var(--color-text-secondary);
 }
 
 .select:disabled {
@@ -99,32 +96,36 @@
 
 .select option {
   color: var(--color-text-primary);
-  background-color: var(--color-background);
+  background-color: #ffffff;
   padding: 8px 12px;
-}
-
-.select option:hover {
-  background-color: #f5f5f5;
 }
 
 .select option:disabled {
   color: var(--color-text-disabled);
-  background-color: var(--color-background-disabled);
+  background-color: #f5f5f5;
 }
 
 .chevron {
   position: absolute;
-  right: 12px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
   color: var(--color-text-secondary);
-  font-size: 10px;
+  font-size: 12px;
   transition: var(--transition-fast);
 }
 
 .selectContainer:focus-within .chevron {
   color: var(--color-primary);
+}
+
+.selectContainer:focus-within .label {
+  color: var(--color-primary);
+}
+
+.selectContainer.error:focus-within .label {
+  color: var(--color-error);
 }
 
 .errorText {
@@ -146,18 +147,18 @@
 /* Size variants */
 .sm .select {
   font-size: 13px;
-  padding: 8px var(--spacing-md);
-  padding-right: 32px;
+  padding: 6px 0 6px 0;
+  padding-right: 24px;
 }
 
 .md .select {
   font-size: var(--font-size-input);
-  padding: 10px var(--spacing-md);
-  padding-right: 36px;
+  padding: 8px 0 8px 0;
+  padding-right: 24px;
 }
 
 .lg .select {
   font-size: 16px;
-  padding: 12px var(--spacing-lg);
-  padding-right: 40px;
+  padding: 10px 0 10px 0;
+  padding-right: 24px;
 }

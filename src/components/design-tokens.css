@@ -1,5 +1,5 @@
 /* ============================================
-   Blink Design System - Form Components Tokens
+   Blink Design System - Material Underline Variant
    ============================================ */
 
 :root {
@@ -18,10 +18,9 @@
   --color-text-secondary: rgba(0, 0, 0, 0.54);
   --color-text-disabled: rgba(0, 0, 0, 0.38);
   --color-border: rgba(0, 0, 0, 0.12);
-  --color-border-hover: rgba(0, 0, 0, 0.2);
-  --color-background: #ffffff;
-  --color-background-disabled: rgba(0, 0, 0, 0.05);
-  --color-background-hover: #fafafa;
+  --color-border-active: rgba(0, 0, 0, 0.2);
+  --color-background: transparent;
+  --color-background-disabled: transparent;
   
   /* -------- Typography -------- */
   --font-family: 'Lato', sans-serif;
@@ -31,12 +30,11 @@
   --font-size-helper: 12px;
   --font-size-error: 12px;
   
-  --font-weight-label: 600;
+  --font-weight-label: 400;
   --font-weight-input: 400;
   --font-weight-helper: 400;
   --font-weight-error: 500;
   
-  --letter-spacing-label: 0.5px;
   --line-height-input: 1.5;
   
   /* -------- Spacing (8px grid) -------- */
@@ -46,20 +44,12 @@
   --spacing-lg: 16px;
   --spacing-xl: 20px;
   
-  /* -------- Border & Radius -------- */
-  --border-radius-input: 8px;
-  --border-radius-button: 8px;
-  --border-width: 1px;
-  
-  /* -------- Elevation (Box Shadows) -------- */
-  --shadow-none: none;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
-  
-  /* Focus shadows (elevation + color) */
-  --shadow-focus-primary: 0 4px 8px rgba(119, 194, 247, 0.2);
-  --shadow-focus-error: 0 4px 8px rgba(237, 89, 88, 0.2);
+  /* -------- Underline Style (Material Underline Variant) -------- */
+  --underline-height-inactive: 1px;
+  --underline-height-active: 2px;
+  --underline-color-inactive: rgba(0, 0, 0, 0.12);
+  --underline-color-active: #77c2f7;
+  --underline-color-error: #ED5958;
   
   /* -------- Transitions -------- */
   --transition-default: all 200ms ease;

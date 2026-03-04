@@ -39,7 +39,7 @@ export const TextInput = ({
         <input
           type={type}
           className={styles.input}
-          placeholder={placeholder}
+          placeholder={placeholder || label}
           value={displayValue}
           onChange={handleChange}
           disabled={disabled}
