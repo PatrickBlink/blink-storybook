@@ -143,44 +143,16 @@ export const DateRangePicker = ({
         </label>
       )}
 
-      <div className={styles.rangeContainer}>
-        <div className={`${styles.dateInputGroup} ${styles.startDate}`}>
-          <div
-            className={`${styles.dateInputContainer} ${error ? styles.error : ''} ${
-              disabled ? styles.disabled : ''
-            }`}
-            onClick={() => !disabled && setShowCalendar(true)}
-          >
-            <input
-              type="text"
-              className={styles.dateInput}
-              value={startDate || ''}
-              placeholder="Start Date"
-              disabled={disabled}
-              readOnly
-            />
-          </div>
-        </div>
-
-        <div className={styles.separator}>To</div>
-
-        <div className={`${styles.dateInputGroup} ${styles.endDate}`}>
-          <div
-            className={`${styles.dateInputContainer} ${error ? styles.error : ''} ${
-              disabled ? styles.disabled : ''
-            }`}
-            onClick={() => !disabled && setShowCalendar(true)}
-          >
-            <input
-              type="text"
-              className={styles.dateInput}
-              value={endDate || ''}
-              placeholder="End Date"
-              disabled={disabled}
-              readOnly
-            />
-          </div>
-        </div>
+      <div 
+        className={`${styles.dateRangeInput} ${error ? styles.error : ''} ${
+          disabled ? styles.disabled : ''
+        }`}
+        onClick={() => !disabled && setShowCalendar(true)}
+      >
+        <span className={styles.dateValue}>
+          {startDate || 'Start Date'} {startDate && endDate && '–'} {endDate || 'End Date'}
+        </span>
+        <span className={styles.rangeIcon}>📅</span>
       </div>
 
       {showCalendar && !disabled && (
