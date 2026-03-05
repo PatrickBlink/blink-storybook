@@ -1,4 +1,5 @@
 import { DateInput } from './DateInput';
+import { useState } from 'react';
 
 export default {
   title: 'Form/DateInput',
@@ -9,68 +10,63 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Default = {
-  args: {
-    label: 'Select Date',
-    placeholder: 'MM/DD/YYYY',
-  },
+const Template = (args) => {
+  const [value, setValue] = useState(args.value || '');
+  return <DateInput {...args} value={value} onChange={setValue} />;
 };
 
-export const WithValue = {
-  args: {
-    label: 'Select Date',
-    value: '2026-03-05',
-  },
+export const Default = Template.bind({});
+Default.args = {
+  label: 'Select Date',
 };
 
-export const Disabled = {
-  args: {
-    label: 'Select Date',
-    value: '2026-03-05',
-    disabled: true,
-  },
+export const WithValue = Template.bind({});
+WithValue.args = {
+  label: 'Select Date',
+  value: '2026-03-05',
 };
 
-export const WithError = {
-  args: {
-    label: 'Select Date',
-    error: 'Date is required',
-  },
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: 'Select Date',
+  value: '2026-03-05',
+  disabled: true,
 };
 
-export const WithHelperText = {
-  args: {
-    label: 'Select Date',
-    helperText: 'Choose a date within the next 30 days',
-  },
+export const WithError = Template.bind({});
+WithError.args = {
+  label: 'Select Date',
+  error: 'Date is required',
 };
 
-export const Required = {
-  args: {
-    label: 'Select Date',
-    required: true,
-  },
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+  label: 'Select Date',
+  helperText: 'Choose a date within the next 30 days',
 };
 
-export const WithConstraints = {
-  args: {
-    label: 'Select Date',
-    min: '2026-03-01',
-    max: '2026-03-31',
-    helperText: 'Select a date within March 2026',
-  },
+export const Required = Template.bind({});
+Required.args = {
+  label: 'Select Date',
+  required: true,
 };
 
-export const Small = {
-  args: {
-    label: 'Select Date',
-    size: 'sm',
-  },
+export const WithConstraints = Template.bind({});
+WithConstraints.args = {
+  label: 'Select Date',
+  min: '2026-03-01',
+  max: '2026-03-31',
+  helperText: 'Select a date within March 2026',
 };
 
-export const Large = {
-  args: {
-    label: 'Select Date',
-    size: 'lg',
-  },
+export const Small = Template.bind({});
+Small.args = {
+  label: 'Select Date',
+  size: 'sm',
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  label: 'Select Date',
+  size: 'lg',
 };

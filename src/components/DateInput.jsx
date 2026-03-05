@@ -105,11 +105,17 @@ export const DateInput = ({
       </div>
 
       {showCalendar && !disabled && (
-        <div className={styles.calendarDropdown}>
+        <div 
+          className={styles.calendarDropdown}
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className={styles.quickSelectButtons}>
             <button
               className={styles.quickButton}
-              onClick={handleToday}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleToday();
+              }}
               type="button"
             >
               Today
@@ -119,7 +125,10 @@ export const DateInput = ({
           <div className={styles.monthNavigation}>
             <button
               className={styles.navButton}
-              onClick={handlePrevMonth}
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrevMonth();
+              }}
               type="button"
             >
               ‹
@@ -127,7 +136,10 @@ export const DateInput = ({
             <span className={styles.monthYear}>{monthYear}</span>
             <button
               className={styles.navButton}
-              onClick={handleNextMonth}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNextMonth();
+              }}
               type="button"
             >
               ›
@@ -150,7 +162,10 @@ export const DateInput = ({
                 className={`${styles.day} ${
                   day && isSelected(day) ? styles.selected : ''
                 } ${!day ? styles.empty : ''}`}
-                onClick={() => day && handleDayClick(day)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  day && handleDayClick(day);
+                }}
                 disabled={!day}
               >
                 {day?.getDate()}

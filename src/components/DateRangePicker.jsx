@@ -184,49 +184,67 @@ export const DateRangePicker = ({
       </div>
 
       {showCalendar && !disabled && (
-        <div className={styles.calendarDropdown}>
+        <div 
+          className={styles.calendarDropdown}
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className={styles.calendarContent}>
             {/* Left Sidebar - Quick Select */}
             <div className={styles.quickSelectSidebar}>
               <button
                 className={styles.quickSelectButton}
-                onClick={handleToday}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToday();
+                }}
                 type="button"
               >
                 Today
               </button>
               <button
                 className={styles.quickSelectButton}
-                onClick={handleYesterday}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleYesterday();
+                }}
                 type="button"
               >
                 Yesterday
               </button>
               <button
                 className={styles.quickSelectButton}
-                onClick={() => handleQuickSelect(7)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleQuickSelect(7);
+                }}
                 type="button"
               >
                 Last 7 days
               </button>
               <button
                 className={styles.quickSelectButton}
-                onClick={() => handleQuickSelect(14)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleQuickSelect(14);
+                }}
                 type="button"
               >
                 Last 14 days
               </button>
               <button
                 className={styles.quickSelectButton}
-                onClick={() => handleQuickSelect(30)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleQuickSelect(30);
+                }}
                 type="button"
               >
                 Last 30 days
               </button>
               <button
                 className={styles.quickSelectButton}
-                onClick={() => {
-                  /* Opens custom date - for now just keep calendar open */
+                onClick={(e) => {
+                  e.stopPropagation();
                 }}
                 type="button"
               >
@@ -240,7 +258,10 @@ export const DateRangePicker = ({
               <div className={styles.monthNavigation}>
                 <button
                   className={styles.navButton}
-                  onClick={handlePrevMonth}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrevMonth();
+                  }}
                   type="button"
                 >
                   ‹
@@ -248,7 +269,10 @@ export const DateRangePicker = ({
                 <span className={styles.monthYear}>{monthYear}</span>
                 <button
                   className={styles.navButton}
-                  onClick={handleNextMonth}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNextMonth();
+                  }}
                   type="button"
                 >
                   ›
@@ -280,7 +304,10 @@ export const DateRangePicker = ({
                       } ${isInDateRange ? styles.inRange : ''} ${
                         isBeforeStartDate ? styles.beforeStart : ''
                       } ${!day ? styles.empty : ''}`}
-                      onClick={() => day && !isBeforeStartDate && handleDayClick(day)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        day && !isBeforeStartDate && handleDayClick(day);
+                      }}
                       disabled={!day || isBeforeStartDate}
                     >
                       {day?.getDate()}
