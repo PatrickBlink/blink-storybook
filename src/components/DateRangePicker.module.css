@@ -23,21 +23,23 @@
   margin-left: 2px;
 }
 
-.dateRangeInput {
-  position: relative;
-  display: flex;
+.dateRangeContainer {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
   background-color: var(--color-background);
   border: none;
   border-bottom: var(--underline-height-inactive) solid var(--underline-color-inactive);
   transition: var(--transition-default);
   cursor: pointer;
   padding: 8px 0;
+  flex-wrap: wrap;
+  position: relative;
   width: 100%;
+  min-height: 40px;
 }
 
-.dateRangeInput::after {
+.dateRangeContainer::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -48,52 +50,128 @@
   transform: scaleX(0);
   transition: var(--transition-default);
   transform-origin: center;
+  pointer-events: none;
 }
 
-.dateRangeInput:hover:not(.disabled) {
+.dateRangeContainer:hover:not(.disabled) {
   border-bottom-color: var(--underline-color-inactive);
 }
 
-.dateRangeInput:focus-within {
+.dateRangeContainer:focus-within {
   border-bottom-color: var(--underline-color-active);
 }
 
-.dateRangeInput:focus-within::after {
+.dateRangeContainer:focus-within::after {
   transform: scaleX(1);
 }
 
-.dateRangeInput.error {
+.dateRangeContainer:has(.clickable:focus),
+.dateRangeContainer:has(.dateChipRemove:focus) {
+  border-bottom-color: var(--underline-color-active);
+}
+
+.dateRangeContainer:has(.clickable:focus)::after,
+.dateRangeContainer:has(.dateChipRemove:focus)::after {
+  transform: scaleX(1);
+}
+
+.dateRangeContainer.error {
   border-bottom-color: var(--underline-color-error);
 }
 
-.dateRangeInput.error::after {
+.dateRangeContainer.error::after {
   background-color: var(--underline-color-error);
 }
 
-.dateRangeInput.disabled {
+.dateRangeContainer.disabled {
   border-bottom-color: var(--underline-color-inactive);
   cursor: not-allowed;
   opacity: 0.5;
 }
 
-.dateValue {
+/* Date Chips */
+.dateChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: transparent;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dateChipText {
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+}
+
+.dateChipRemove {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  transition: var(--transition-fast);
+}
+
+.dateChipRemove:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: var(--color-text-primary);
+}
+
+/* Separator */
+.separator {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 2px;
+}
+
+/* Placeholder */
+.placeholder {
+  color: var(--color-text-secondary);
   font-family: var(--font-family);
   font-size: var(--font-size-input);
   font-weight: var(--font-weight-input);
-  color: var(--color-text-primary);
-  line-height: var(--line-height-input);
 }
 
-.rangeIcon {
+/* Calendar Icon */
+.calendarIcon {
   font-size: 18px;
   opacity: 0.6;
   transition: var(--transition-fast);
   flex-shrink: 0;
-  margin-left: 8px;
+  margin-left: auto;
 }
 
-.dateRangeInput:hover:not(.disabled) .rangeIcon {
+.dateRangeContainer:hover:not(.disabled) .calendarIcon {
   opacity: 0.8;
+}
+
+.dateRangeContainer:focus-within .calendarIcon {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+/* Clickable area */
+.clickable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  z-index: 0;
 }
 
 /* Calendar Dropdown */
@@ -103,17 +181,18 @@
   left: 0;
   margin-top: 8px;
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   z-index: 10000;
   border: 1px solid rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  width: 100%;
+  max-width: 650px;
 }
 
 .calendarContent {
   display: flex;
-  width: auto;
-  max-width: none;
+  width: 100%;
 }
 
 /* Quick Select Sidebar */
@@ -154,6 +233,7 @@
   flex-direction: column;
   padding: 12px;
   gap: 8px;
+  flex: 1;
 }
 
 .monthNavigation {
@@ -225,7 +305,7 @@
   width: 28px;
   height: 28px;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;
   background-color: transparent;
   color: var(--color-text-primary);
   font-family: var(--font-family);
@@ -248,6 +328,7 @@
   background-color: #77c2f7;
   color: #ffffff;
   font-weight: 500;
+  border-radius: 50%;
   box-shadow: 0 1px 2px rgba(119, 194, 247, 0.2);
 }
 
@@ -255,7 +336,7 @@
 .day.inRange {
   background-color: rgba(119, 194, 247, 0.2);
   color: var(--color-text-primary);
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 /* Dates before start date */
@@ -289,26 +370,29 @@
 }
 
 /* Size variants */
-.sm .dateRangeInput {
+.sm .dateRangeContainer {
   padding: 6px 0;
+  min-height: 36px;
 }
 
-.sm .dateValue {
+.sm .dateChip {
+  font-size: 12px;
+}
+
+.md .dateRangeContainer {
+  padding: 8px 0;
+  min-height: 40px;
+}
+
+.md .dateChip {
   font-size: 13px;
 }
 
-.md .dateRangeInput {
-  padding: 8px 0;
-}
-
-.md .dateValue {
-  font-size: var(--font-size-input);
-}
-
-.lg .dateRangeInput {
+.lg .dateRangeContainer {
   padding: 10px 0;
+  min-height: 44px;
 }
 
-.lg .dateValue {
-  font-size: 16px;
+.lg .dateChip {
+  font-size: 14px;
 }

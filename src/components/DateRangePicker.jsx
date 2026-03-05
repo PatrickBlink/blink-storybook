@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './DateRangePicker.module.css';
 
 export const DateRangePicker = ({
@@ -17,6 +17,7 @@ export const DateRangePicker = ({
   const [showCalendar, setShowCalendar] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectingStart, setSelectingStart] = useState(true);
+  const containerRef = useRef(null);
 
   const getDaysInMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -32,6 +33,16 @@ export const DateRangePicker = ({
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
+  };
+
+  const formatDisplayDate = (dateString) => {
+    if (!dateString) return '';
+    const date = parseDate(dateString);
+    if (!date) return dateString;
+    const day = String(date.getDate()).padStart(2, '0');
+    const monthName = date.toLocaleString('default', { month: 'short' });
+    const year = date.getFullYear();
+    return `${day} ${monthName} ${year}`;
   };
 
   const parseDate = (dateString) => {
@@ -131,11 +142,28 @@ export const DateRangePicker = ({
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1));
   };
 
+  // Close calendar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setShowCalendar(false);
+      }
+    };
+
+    if (showCalendar) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [showCalendar]);
+
   const calendarDays = generateCalendarDays();
   const monthYear = currentMonth.toLocaleString('default', { month: 'short', year: 'numeric' }).toUpperCase();
 
   return (
-    <div className={`${styles.dateRangeWrapper} ${styles[size]}`}>
+    <div 
+      className={`${styles.dateRangeWrapper} ${styles[size]}`}
+      ref={containerRef}
+    >
       {label && (
         <label className={styles.label}>
           {label}
@@ -144,15 +172,68 @@ export const DateRangePicker = ({
       )}
 
       <div 
-        className={`${styles.dateRangeInput} ${error ? styles.error : ''} ${
+        className={`${styles.dateRangeContainer} ${error ? styles.error : ''} ${
           disabled ? styles.disabled : ''
         }`}
-        onClick={() => !disabled && setShowCalendar(true)}
       >
-        <span className={styles.dateValue}>
-          {startDate || 'Start Date'} {startDate && endDate && '–'} {endDate || 'End Date'}
-        </span>
-        <span className={styles.rangeIcon}>📅</span>
+        {/* Start Date Display */}
+        {startDate && (
+          <div className={styles.dateChip}>
+            <span className={styles.dateChipText}>{formatDisplayDate(startDate)}</span>
+            <button
+              className={styles.dateChipRemove}
+              onClick={(e) => {
+                e.stopPropagation();
+                onStartDateChange?.('');
+                setSelectingStart(true);
+              }}
+              type="button"
+              aria-label="Remove start date"
+            >
+              ×
+            </button>
+          </div>
+        )}
+
+        {/* Separator */}
+        {startDate && endDate && (
+          <span className={styles.separator}>–</span>
+        )}
+
+        {/* End Date Display */}
+        {endDate && (
+          <div className={styles.dateChip}>
+            <span className={styles.dateChipText}>{formatDisplayDate(endDate)}</span>
+            <button
+              className={styles.dateChipRemove}
+              onClick={(e) => {
+                e.stopPropagation();
+                onEndDateChange?.('');
+              }}
+              type="button"
+              aria-label="Remove end date"
+            >
+              ×
+            </button>
+          </div>
+        )}
+
+        {/* Placeholder Text when empty */}
+        {!startDate && !endDate && (
+          <span className={styles.placeholder}>Select date range</span>
+        )}
+
+        {/* Calendar Icon */}
+        <span className={styles.calendarIcon}>📅</span>
+
+        {/* Hidden input for click handler */}
+        <div
+          className={styles.clickable}
+          onClick={() => !disabled && setShowCalendar(true)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && !disabled && setShowCalendar(true)}
+        />
       </div>
 
       {showCalendar && !disabled && (
