@@ -128,35 +128,35 @@
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+  z-index: 10000;
   border: 1px solid rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
 .calendarContent {
   display: flex;
-  min-width: 600px;
-  max-width: 700px;
+  width: auto;
+  max-width: none;
 }
 
 /* Quick Select Sidebar */
 .quickSelectSidebar {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 16px 0;
-  min-width: 140px;
+  gap: 0;
+  padding: 12px 0;
+  min-width: 130px;
   background-color: #fafafa;
   border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .quickSelectButton {
-  padding: 8px 16px;
+  padding: 6px 12px;
   border: none;
   background-color: transparent;
   color: var(--color-text-primary);
   font-family: var(--font-family);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   cursor: pointer;
   text-align: left;
@@ -175,31 +175,31 @@
 .calendarPanel {
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  gap: 12px;
+  padding: 12px;
+  gap: 8px;
 }
 
 .monthNavigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .monthYear {
   font-family: var(--font-family);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
 .navButton {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border: none;
   background-color: transparent;
   color: var(--color-text-primary);
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 200ms ease;
@@ -207,6 +207,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 300;
+  padding: 0;
 }
 
 .navButton:hover:not(:disabled) {
@@ -221,17 +222,17 @@
 .weekdaysRow {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-bottom: 4px;
+  gap: 2px;
+  margin-bottom: 2px;
 }
 
 .weekday {
   font-family: var(--font-family);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--color-text-secondary);
   text-align: center;
-  height: 28px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,24 +241,25 @@
 .daysGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 2px;
 }
 
 .day {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border: none;
   border-radius: 50%;
   background-color: transparent;
   color: var(--color-text-primary);
   font-family: var(--font-family);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   cursor: pointer;
   transition: all 200ms ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
 }
 
 .day:not(.empty):not(:disabled):hover {
@@ -269,7 +271,7 @@
   background-color: #77c2f7;
   color: #ffffff;
   font-weight: 500;
-  box-shadow: 0 1px 3px rgba(119, 194, 247, 0.3);
+  box-shadow: 0 1px 2px rgba(119, 194, 247, 0.2);
 }
 
 /* Dates in the range between start and end */
