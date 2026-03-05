@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import { DateInput } from './DateInput';
-import { useState } from 'react';
 
 export default {
   title: 'Form/DateInput',

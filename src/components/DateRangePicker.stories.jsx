@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import { DateRangePicker } from './DateRangePicker';
-import { useState } from 'react';
 
 export default {
   title: 'Form/DateRangePicker',
